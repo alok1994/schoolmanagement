@@ -1,0 +1,39 @@
+<!-- student_details/templates/student_details/student_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Details</title>
+    <!-- Include CSS links here -->
+</head>
+<body>
+    <h2>Student Details</h2>
+
+    <div>
+        <img src="{{ student.admission_form.photo.url }}" alt="{{ student.admission_form.first_name }}">
+    </div>
+
+    <h3>Basic Information</h3>
+    <ul>
+        <li><strong>Name:</strong> {{ student.admission_form.first_name }} {{ student.admission_form.last_name }}</li>
+        <li><strong>Father's Name:</strong> {{ student.admission_form.father_name }}</li>
+        <li><strong>Mother's Name:</strong> {{ student.admission_form.mother_name }}</li>
+        <li><strong>Mobile Number:</strong> {{ student.admission_form.mobile_number }}</li>
+        <!-- Add other basic information fields here -->
+    </ul>
+
+    <h3>Admission Information</h3>
+    <ul>
+        <li><strong>Admission Date:</strong> {{ student.admission_form.admission_date }}</li>
+        <li><strong>Address:</strong> {{ student.admission_form.address }}</li>
+        <li><strong>Aadhar Card Number:</strong> {{ student.admission_form.aadhar_card_number }}</li>
+        <li><strong>Previous School Details:</strong> {{ student.admission_form.previous_school_details }}</li>
+        <li><strong>Percentage:</strong> {{ student.admission_form.percentage }}</li>
+        <!-- Add other admission information fields here -->
+    </ul>
+
+    <!-- Add other sections for more details as needed -->
+
+    <a href="{% url 'student_list' %}">Back to Student List</a>
+</body>
+</html>

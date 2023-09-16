@@ -1,0 +1,28 @@
+<!-- student_details/templates/student_details/student_search.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Students</title>
+    <!-- Include CSS links here -->
+</head>
+<body>
+    <h2>Search Students</h2>
+
+    <form method="post" action="{% url 'student_search' %}">
+        {% csrf_token %}
+        <label for="current_year">Current Year:</label>
+        <select id="current_year" name="current_year">
+            <option value="" selected>Any</option>
+            <!-- Add options for available years based on your data -->
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+            <!-- Add more options as needed -->
+        </select>
+        <!-- Add other search fields as needed -->
+        <button type="submit">Search</button>
+    </form>
+
+    <a href="{% url 'student_list' %}">Back to Student List</a>
+</body>
+</html>
