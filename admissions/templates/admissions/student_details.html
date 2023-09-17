@@ -1,0 +1,20 @@
+<!-- admissions/templates/admissions/student_details.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Details</title>
+</head>
+<body>
+    <h1>Student Details</h1>
+    <h2>{{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</h2>
+    <p>Father's Name: {{ student.father_name }}</p>
+    <p>Mother's Name: {{ student.mother_name }}</p>
+    <p>Date of Birth: {{ student.date_of_birth }}</p>
+    <p>Aadhar Card: {{ student.aadhar_card }}</p>
+    <p>Previous School: {{ student.previous_school }}</p>
+    <p>Address: {{ student.address }}</p>
+    <p>Caste: {{ student.caste }}</p>
+    <!-- Add more details as needed -->
+    <a href="{% url 'student_list' %}">Back to Student List</a>
+</body>
+</html>
