@@ -13,6 +13,9 @@ class Admission(models.Model):
     previous_school = models.CharField(max_length=200)
     address = models.TextField()
     caste = models.CharField(max_length=50)
-
+    admission_class = models.CharField(max_length=50)
+    admission_date = models.DateField(auto_now_add=True)
+    mobile_number = models.CharField(max_length=15)
+    
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

@@ -1,0 +1,22 @@
+<!-- Create a new HTML file: admissions/templates/admissions/dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>School Management Dashboard</title>
+</head>
+<body>
+    <h1>School Management Dashboard</h1>
+    <ul>
+        <li><a href="{% url 'admission_form' %}">Admission Form</a></li>
+        <li><a href="{% url 'student_list' %}">Student List</a></li>
+        <li><a href="{% url 'class_6' %}">Class 6</a></li>
+        <li><a href="{% url 'class_7' %}">Class 7</a></li>
+        <li><a href="{% url 'class_8' %}">Class 8</a></li>
+        <li><a href="{% url 'class_9' %}">Class 9</a></li>
+        <li><a href="{% url 'class_10' %}">Class 10</a></li>
+        <li><a href="{% url 'class_11' %}">Class 11</a></li>
+        <li><a href="{% url 'class_12' %}">Class 12</a></li>
+        <!-- Add more links as needed -->
+    </ul>
+</body>
+</html>
