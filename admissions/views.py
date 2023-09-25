@@ -145,3 +145,9 @@ def class_12(request):
         'year_filter_form': year_filter_form,
     }
     return render(request, 'admissions/class_12.html', context)
+
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+
