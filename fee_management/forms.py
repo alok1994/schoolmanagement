@@ -1,7 +1,8 @@
 from django import forms
 from .models import Fee
 
-class FeeForm(forms.ModelForm):
+class FeeForm(forms.ModelForm):  # Change from forms.Form to forms.ModelForm
     class Meta:
         model = Fee
-        fields = '__all__'  # Include all fields from the model
+        fields = ['amount', 'payment_date', 'month']
+

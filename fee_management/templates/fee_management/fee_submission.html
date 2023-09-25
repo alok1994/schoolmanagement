@@ -1,0 +1,17 @@
+<!-- fee_management/templates/fee_management/fee_submission.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fee Submission</title>
+</head>
+<body>
+    <h1>Fee Submission</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ fee_form.as_p }}
+        <button type="submit">Submit Fee</button>
+    </form>
+</body>
+</html>

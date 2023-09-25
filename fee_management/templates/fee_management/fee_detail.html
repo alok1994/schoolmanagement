@@ -5,6 +5,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Student Details</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
     <h1>Student Details</h1>
@@ -21,13 +35,40 @@
         <button type="submit">Filter</button>
     </form>
 
+    {% if class_students %}
     <h2>Students:</h2>
-    {{class_students}}
-    <ul>
-        {% for student in class_students %}
-        <li>{{ student }}</li>
-        <!-- Display more student details as needed -->
-        {% endfor %}
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Father Name</th>
+                <th>Mother Name</th>
+                <th>Last Month</th>
+                <th>Last Month's Fee</th>
+                <th>Last Month's Payment Date</th> 
+                <th>Actions</th>
+                <!-- Add more table headers as needed -->
+            </tr>
+        </thead>    
+        <tbody>
+            {% for student, last_month_data in last_month_fee_list %}
+            <tr>
+                <td>{{ student.first_name }}</td>
+                <td>{{ student.father_name }}</td>
+                <td>{{ student.mother_name }}</td>
+                <td>{{ last_month_data.last_month }}</td>
+                <td>{{ last_month_data.last_month_amount }}</td>
+                <td>{{ last_month_data.last_month_payment_date }}</td> 
+                <td>
+                    <a href="{% url 'fee_submission' student.id %}">Submit Fee</a>
+                </td>                
+                <!-- Add more student details here -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No students found.</p>
+    {% endif %}
 </body>
 </html>
