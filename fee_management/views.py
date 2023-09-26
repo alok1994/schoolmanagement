@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Fee
 from .forms import FeeForm
 from admissions.models import Admission  # Import the Student model
 from django.db.models import Max
 from datetime import datetime
+from django.utils.crypto import get_random_string
 
 
 def fee_detail(request):
@@ -77,11 +78,35 @@ def fee_submission(request, student_id):
     if request.method == 'POST':
         fee_form = FeeForm(request.POST)
         if fee_form.is_valid():
+            timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+            random_part = get_random_string(length=6, allowed_chars='1234567890')
+            receipt_number = f"R{timestamp}{random_part}"
             fee = fee_form.save(commit=False)
-            fee.student = student  # Associate the fee with the student
+            fee.student = student
+            fee.receipt_number = receipt_number
             fee.save()
-            return redirect('fee_detail')
+            print(f"Fee ID: {fee.id}")
+            return redirect('generate_receipt', fee.id)
     else:
         fee_form = FeeForm()
 
-    return render(request, 'fee_management/fee_submission.html', {'fee_form': fee_form})
+    return render(request, 'fee_management/fee_submission.html', {'fee_form': fee_form, 'student': student})
+
+def fee_history(request, student_id):
+    student = get_object_or_404(Admission, id=student_id)  # Get the student by ID
+
+    # Query the database to get the fee history for the selected student
+    fee_history = Fee.objects.filter(student=student).order_by('-payment_date')
+
+    return render(request, 'fee_management/fee_history.html', {'student': student, 'fee_history': fee_history})
+
+def generate_receipt(request, fee_id):
+    fee = get_object_or_404(Fee, id=fee_id)
+    student = fee.student
+
+    context = {
+        'student': student,
+        'fee': fee,
+    }
+
+    return render(request, 'fee_management/receipt.html', context)

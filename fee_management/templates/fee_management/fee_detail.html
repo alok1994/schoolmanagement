@@ -1,6 +1,7 @@
 <!-- fee_management/templates/fee_management/fee_detail.html -->
 
 <!DOCTYPE html>
+<a href="{% url 'dashboard' %}">Go to Dashboard</a>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -53,7 +54,7 @@
         <tbody>
             {% for student, last_month_data in last_month_fee_list %}
             <tr>
-                <td>{{ student.first_name }}</td>
+                <td>{{ student.first_name }} {{ student.middle_name }} {{ student.last_name }} </td>
                 <td>{{ student.father_name }}</td>
                 <td>{{ student.mother_name }}</td>
                 <td>{{ last_month_data.last_month }}</td>
@@ -61,6 +62,7 @@
                 <td>{{ last_month_data.last_month_payment_date }}</td> 
                 <td>
                     <a href="{% url 'fee_submission' student.id %}">Submit Fee</a>
+                    <a href="{% url 'fee_history' student.id %}">View Fee History</a>
                 </td>                
                 <!-- Add more student details here -->
             </tr>
