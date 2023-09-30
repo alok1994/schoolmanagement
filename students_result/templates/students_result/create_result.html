@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<a href="{% url 'dashboard' %}">Go to Dashboard</a>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Result</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h4>Student Information</h4>
+    <ul>
+        <li><strong>Student Name:</strong> {{ student.first_name }} {{ student.last_name }}</li>
+        <li><strong>Father's Name:</strong> {{ student.father_name }}</li>
+        <li><strong>Mother's Name:</strong> {{ student.mother_name }}</li>
+        <li><strong>Date of Birth:</strong> {{ student.date_of_birth }}</li>
+
+    </ul>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="exam_type">Exam Type:</label>
+        <select id="exam_type" name="exam_type" required>
+            <option value="Mid-Term">Mid-Term</option>
+            <option value="Final">Final</option>
+            <option value="Quiz">Quiz</option>
+        <!-- Add more exam type options as needed -->
+        </select>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Min Marks</th>
+                    <th>Max Marks</th>
+                    <th>Marks Obtained</th>
+                    <th>Remark</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Hindi</td>
+                    <td><input type="number" name="min_marks_hindi"  id="min_marks_hindi" min="0" max="100" required></td>
+                    <td><input type="number" name="max_marks_hindi" id="max_marks_hindi" min="0" max="100" required></td>
+                    <td><input type="number" name="marks_hindi" id="marks_hindi" min="0" max="100" required></td>
+                    <td><input type="text" name="remark_hindi"></td>
+                </tr>
+                <tr>
+                    <td>English</td>
+                    <td><input type="number" name="min_marks_english" id="min_marks_english" min="0" max="100" required></td>
+                    <td><input type="number" name="max_marks_english" id="max_marks_english" min="0" max="100" required></td>
+                    <td><input type="number" name="marks_english" id="marks_english" min="0" max="100" required></td>
+                    <td><input type="text" name="remark_english" id="remark_english"></td>
+                </tr>
+                <tr>
+                    <td>Maths</td>
+                    <td><input type="number" name="min_marks_maths" id="min_marks_maths" min="0" max="100" required></td>
+                    <td><input type="number" name="max_marks_maths" id="max_marks_maths" min="0" max="100" required></td>
+                    <td><input type="number" name="marks_maths" id="marks_maths" min="0" max="100" required></td>
+                    <td><input type="text" name="remark_maths" id="remark_maths"></td>
+                </tr>.
+                <tr>
+                    <td>Science</td>
+                    <td><input type="number" name="min_marks_science" id="min_marks_science" min="0" max="100" required></td>
+                    <td><input type="number" name="max_marks_science" id="max_marks_science" min="0" max="100" required></td>
+                    <td><input type="number" name="marks_science" id="marks_science"  min="0" max="100" required></td>
+                    <td><input type="text" name="remark_science" id="remark_science"></td>
+                </tr>
+                <tr>
+                    <td>Social Science</td>
+                    <td><input type="number" name="min_marks_ss" id="min_marks_ss" min="0" max="100" required></td>
+                    <td><input type="number" name="max_marks_ss" id="max_marks_ss" min="0" max="100" required></td>
+                    <td><input type="number" name="marks_ss" id="marks_ss" min="0" max="100" required></td>
+                    <td><input type="text" name="remark_ss" id="remark_ss"></td>
+                </tr>
+                <tr>
+                    <td>Sankarit</td>
+                    <td><input type="number" name="min_marks_sankarit" id="min_marks_sankarit" min="0" max="100" required></td>
+                    <td><input type="number" name="max_marks_sankarit" id="max_marks_sankarit" min="0" max="100" required></td>
+                    <td><input type="number" name="marks_sankarit" id="marks_sankarit" min="0" max="100" required></td>
+                    <td><input type="text" name="remark_sankarit" id="remark_sankarit"></td>
+                </tr>
+                <tr>
+                    <td>Geology</td>
+                    <td><input type="number" name="min_marks_geology" id="min_marks_geology"  min="0" max="100" required></td>
+                    <td><input type="number" name="max_marks_geology" id="max_marks_geology" min="0" max="100" required></td>
+                    <td><input type="number" name="marks_geology"  id="marks_geology"  min="0" max="100" required></td>
+                    <td><input type="text" name="remark_geology" id="remark_geology"></td>
+                </tr>
+                <tr>
+                    <td>Arts</td>
+                    <td><input type="number" name="min_marks_arts" id="min_marks_arts" min="0" max="100" required></td>
+                    <td><input type="number" name="max_marks_arts" id="max_marks_arts" min="0" max="100" required></td>
+                    <td><input type="number" name="marks_arts" id="marks_arts"  min="0" max="100" required></td>
+                    <td><input type="text" name="remark_arts" id="remark_arts"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="totals">
+            <div class="total-item">
+                <strong>Total max Marks:</strong> <span name="total_max_marks" id="total_max_marks">0.00</span>
+            </div>
+            <div class="total-item">
+                <strong>Total marks Obtained:</strong> <span name="total_marks_obtained" id="total_marks_obtained">0.00</span>
+            </div>
+            <div class="total-item">
+                <strong>Percentage:</strong> <span name="percentage" id="percentage">0.00%</span>
+            </div>
+        </div>
+        <button type="submit">Submit Result</button>
+    </form>
+    <a href="{% url 'students_result' %}">Back to Students Result</a>
+
+<!-- Add this script section at the end of your HTML file -->
+<script>
+    // Function to calculate and update the totals
+    function updateTotals() {
+    // Initialize variables for totals
+    let totalMinMarks = 0;
+    let totalMaxMarks = 0;
+    let totalMarksObtained = 0;
+
+    // Loop through subjects and calculate totals
+    const subjects = ['hindi', 'english', 'maths', 'science', 'ss', 'sankarit', 'geology', 'arts'];
+    for (const subject of subjects) {
+        console.log('kav', subject);
+        const minMarks = parseFloat(document.getElementById(`min_marks_${subject}`).value) || 0;
+        const maxMarks = parseFloat(document.getElementById(`max_marks_${subject}`).value) || 0;
+        const marks = parseFloat(document.getElementById(`marks_${subject}`).value) || 0;
+
+        totalMinMarks += minMarks;
+        totalMaxMarks += maxMarks;
+        totalMarksObtained += marks;
+    }
+
+    // Calculate the percentage
+    const percentage = (totalMarksObtained / totalMaxMarks) * 100;
+
+    // Update the HTML elements with the calculated totals and percentage
+    document.getElementById('total_max_marks').textContent = totalMaxMarks.toFixed(2); // Format as two decimal places
+    document.getElementById('total_marks_obtained').textContent = totalMarksObtained.toFixed(2); // Format as two decimal places
+    document.getElementById('percentage').textContent = percentage.toFixed(2) + '%'; // Format as percentage
+    }
+
+    // Add event listeners to input fields to update totals on input change
+    const inputFields = document.querySelectorAll('input[type="number"]');
+    inputFields.forEach(input => {
+        input.addEventListener('input', updateTotals);
+    });
+    // Initialize totals on page load
+    updateTotals();
+</script>
+
+</body>
+</html>
+

@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'students',
     'admissions',
     'fee_management',
+    'students_result',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -31,10 +31,10 @@ def fee_detail(request):
             'last_month_payment_date': fee['last_month_payment_date']
         }
 
-    current_month_fees = Fee.objects.filter(student__in=Admission.objects.all()).values('student').annotate(
-        current_month=Max('month'),
-        current_month_amount=Max('amount')
-    )
+    #current_month_fees = Fee.objects.filter(student__in=Admission.objects.all()).values('student').annotate(
+    #    current_month=Max('month'),
+    #    current_month_amount=Max('amount')
+    #)
 
     #current_month_fee_dict = {}
     #for fee in current_month_fees:
@@ -54,17 +54,6 @@ def fee_detail(request):
         #current_month_fee_list.append((student, current_month_data))
 
     return render(request, 'fee_management/fee_detail.html', {'class_students': class_students, 'class_choices': class_choices, 'selected_class': selected_class, 'last_month_fee_list': last_month_fee_list,})
-
-
-'''def add_fee(request):
-    if request.method == 'POST':
-        form = FeeForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('fee_detail')  # Redirect to the fee details page
-    else:
-        form = FeeForm()
-    return render(request, 'fee_management/add_fee.html', {'form': form})'''
 
 
 def fee_submission(request, student_id):

@@ -13,7 +13,7 @@
         {% csrf_token %}
         {{ fee_form.as_p }}
         <button type="submit">Submit Fee</button>
-    </form>9
+    </form>
     {% if fee.id %}
     <a href="{% url 'generate_receipt' fee.id %}">Generate Receipt</a>
     {% endif %}
