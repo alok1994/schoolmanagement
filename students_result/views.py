@@ -27,6 +27,7 @@ def create_result(request, student_id):
         total_marks_obtained = 0  # Initialize total marks obtained
         percentage = 0
         result_objects = []
+        total_min_marks = 0
 
         for subject in subjects:
             min_marks = request.POST.get(f'min_marks_{subject}')
