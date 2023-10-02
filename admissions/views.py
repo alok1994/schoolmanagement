@@ -1,9 +1,11 @@
-# admissions/views.py
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import AdmissionForm
 from .models import Admission
 from .forms import AdmissionYearFilterForm, AdmissionClassFilterForm
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def admission_form(request):
     if request.method == 'POST':
         form = AdmissionForm(request.POST, request.FILES)
@@ -14,6 +16,7 @@ def admission_form(request):
         form = AdmissionForm()
     return render(request, 'admissions/admission_form.html', {'form': form})
 
+@login_required
 def student_list(request):
     students = Admission.objects.all()
 
@@ -38,14 +41,16 @@ def student_list(request):
 
     return render(request, 'admissions/student_list.html', context)
 
+@login_required
 def student_details(request, student_id):
     student = get_object_or_404(Admission, pk=student_id)
     return render(request, 'admissions/student_details.html', {'student': student})
 
+@login_required
 def dashboard(request):
     return render(request, 'admissions/dashboard.html')
 
-
+@login_required
 def class_6(request):
     class_6_students = Admission.objects.filter(admission_class='6')
 
@@ -62,6 +67,7 @@ def class_6(request):
     }
     return render(request, 'admissions/class_6.html', context)
 
+@login_required
 def class_7(request):
     class_7_students = Admission.objects.filter(admission_class='7')
     year_filter_form = AdmissionYearFilterForm(request.GET)
@@ -76,6 +82,7 @@ def class_7(request):
     }
     return render(request, 'admissions/class_7.html', context)
 
+@login_required
 def class_8(request):
     class_8_students = Admission.objects.filter(admission_class='8')
     year_filter_form = AdmissionYearFilterForm(request.GET)
@@ -90,6 +97,7 @@ def class_8(request):
     }
     return render(request, 'admissions/class_8.html', context)
 
+@login_required
 def class_9(request):
     class_9_students = Admission.objects.filter(admission_class='9')
     year_filter_form = AdmissionYearFilterForm(request.GET)
@@ -104,6 +112,7 @@ def class_9(request):
     }
     return render(request, 'admissions/class_9.html', context)
 
+@login_required
 def class_10(request):
     class_10_students = Admission.objects.filter(admission_class='10')
     year_filter_form = AdmissionYearFilterForm(request.GET)
@@ -118,6 +127,7 @@ def class_10(request):
     }
     return render(request, 'admissions/class_10.html', context)
 
+@login_required
 def class_11(request):
     class_11_students = Admission.objects.filter(admission_class='11')
     year_filter_form = AdmissionYearFilterForm(request.GET)
@@ -132,6 +142,7 @@ def class_11(request):
     }
     return render(request, 'admissions/class_11.html', context)
 
+@login_required
 def class_12(request):
     class_12_students = Admission.objects.filter(admission_class='12')
     year_filter_form = AdmissionYearFilterForm(request.GET)
@@ -147,7 +158,26 @@ def class_12(request):
     return render(request, 'admissions/class_12.html', context)
 
 
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from django.urls import reverse
+@login_required
+def get_student_data(request):
+    # Query your Admission model to retrieve student data
+    students = Admission.objects.all()
+    
+    # Serialize the data to JSON
+    student_data = [
+        {
+            'first_name': student.first_name,
+            'middle_name': student.middle_name,
+            'last_name': student.last_name,
+            'admission_class': student.admission_class,
+        }
+        for student in students
+    ]
+    
+    # Return the JSON response
+    return JsonResponse(student_data, safe=False)
+
+
+
+
 

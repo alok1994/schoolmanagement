@@ -1,5 +1,6 @@
 <!-- admissions/templates/admissions/admission_form.html -->
 <a href="{% url 'dashboard' %}">Dashboard</a>
+<a href="{% url 'logout' %}">Logout</a>
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}

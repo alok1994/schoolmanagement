@@ -132,7 +132,9 @@ DEBUG = True
 
 # settings.py
 
-LOGIN_URL = 'login'  # This sets the URL where users will be redirected if they are not authenticated.
+LOGIN_URL = '/students/login/'  # This sets the URL where users will be redirected if they are not authenticated.
+LOGIN_REDIRECT_URL = '/admissions/dashboard/'
+LOGOUT_REDIRECT_URL = '/logout/'
 
 
 MEDIA_URL = '/media/'

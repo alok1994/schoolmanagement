@@ -5,8 +5,9 @@ from admissions.models import Admission  # Import the Student model
 from django.db.models import Max
 from datetime import datetime
 from django.utils.crypto import get_random_string
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def fee_detail(request):
     # Get a list of distinct class values from the Student model
     class_choices = Admission.objects.values_list('admission_class', flat=True).distinct()
@@ -55,7 +56,7 @@ def fee_detail(request):
 
     return render(request, 'fee_management/fee_detail.html', {'class_students': class_students, 'class_choices': class_choices, 'selected_class': selected_class, 'last_month_fee_list': last_month_fee_list,})
 
-
+@login_required
 def fee_submission(request, student_id):
     try:
         student = Admission.objects.get(id=student_id)  # Retrieve the student using student_id
@@ -81,6 +82,7 @@ def fee_submission(request, student_id):
 
     return render(request, 'fee_management/fee_submission.html', {'fee_form': fee_form, 'student': student})
 
+@login_required
 def fee_history(request, student_id):
     student = get_object_or_404(Admission, id=student_id)  # Get the student by ID
 
@@ -89,6 +91,7 @@ def fee_history(request, student_id):
 
     return render(request, 'fee_management/fee_history.html', {'student': student, 'fee_history': fee_history})
 
+@login_required
 def generate_receipt(request, fee_id):
     fee = get_object_or_404(Fee, id=fee_id)
     student = fee.student

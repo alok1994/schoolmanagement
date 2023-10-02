@@ -13,5 +13,6 @@ urlpatterns = [
     path('class_9/', views.class_9, name='class_9'),
     path('class_10/', views.class_10, name='class_10'),
     path('class_11/', views.class_11, name='class_11'),
-    path('class_12/', views.class_12, name='class_12')   
+    path('class_12/', views.class_12, name='class_12'),
+    path('api/students/', views.get_student_data, name='get_student_data'), 
 ]

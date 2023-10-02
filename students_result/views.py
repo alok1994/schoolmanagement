@@ -1,7 +1,9 @@
 from django.shortcuts import render,redirect
 from .models import Result
 from admissions.models import Admission
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def students_result(request):
     # Handle filtering based on class (admission_class)
     class_choices = Admission.objects.values_list('admission_class', flat=True).distinct()
@@ -14,7 +16,7 @@ def students_result(request):
 
     return render(request, 'students_result/students_result.html', {'results': results, 'class_choices': class_choices, 'selected_class': selected_class})
 
-
+@login_required
 def create_result(request, student_id):
     student = Admission.objects.get(id=student_id)
 
@@ -70,7 +72,7 @@ def create_result(request, student_id):
 
     return render(request, 'students_result/create_result.html', {'student': student})
 
-
+@login_required
 def result_history(request, student_id):
     # Retrieve the student
     student = Admission.objects.get(id=student_id)
