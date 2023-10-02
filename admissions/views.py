@@ -4,6 +4,7 @@ from .models import Admission
 from .forms import AdmissionYearFilterForm, AdmissionClassFilterForm
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
+from .forms import StudentUpdateForm
 
 @login_required
 def admission_form(request):
@@ -178,6 +179,23 @@ def get_student_data(request):
     return JsonResponse(student_data, safe=False)
 
 
+@login_required
+def update_student(request, student_id):
+    student = get_object_or_404(Admission, id=student_id)
 
+    if request.method == 'POST':
+        form = StudentUpdateForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect('student_list')  # Redirect back to the student list page
+    else:
+        form = StudentUpdateForm(instance=student)
+
+    context = {
+        'student': student,
+        'form': form,
+    }
+
+    return render(request, 'admissions/update_student.html', context)
 
 
