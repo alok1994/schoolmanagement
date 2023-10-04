@@ -199,3 +199,59 @@ def update_student(request, student_id):
     return render(request, 'admissions/update_student.html', context)
 
 
+@login_required
+def update_student_class_6(request, student_id):
+    student = get_object_or_404(Admission, id=student_id)
+
+    if request.method == 'POST':
+        form = StudentUpdateForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect('class_6')  # Redirect back to the class 6 page
+    else:
+        form = StudentUpdateForm(instance=student)
+
+    context = {
+        'student': student,
+        'form': form,
+    }
+
+    return render(request, 'admissions/update_student.html', context)
+
+@login_required
+def update_student_class_7(request, student_id):
+    student = get_object_or_404(Admission, id=student_id)
+
+    if request.method == 'POST':
+        form = StudentUpdateForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect('class_7')  # Redirect back to the class 6 page
+    else:
+        form = StudentUpdateForm(instance=student)
+
+    context = {
+        'student': student,
+        'form': form,
+    }
+
+    return render(request, 'admissions/update_student.html', context)
+
+@login_required
+def update_student_class_8(request, student_id):
+    student = get_object_or_404(Admission, id=student_id)
+
+    if request.method == 'POST':
+        form = StudentUpdateForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect('class_8')  # Redirect back to the class 6 page
+    else:
+        form = StudentUpdateForm(instance=student)
+
+    context = {
+        'student': student,
+        'form': form,
+    }
+
+    return render(request, 'admissions/update_student.html', context)

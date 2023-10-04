@@ -15,5 +15,8 @@ urlpatterns = [
     path('class_11/', views.class_11, name='class_11'),
     path('class_12/', views.class_12, name='class_12'),
     path('api/students/', views.get_student_data, name='get_student_data'),
-    path('update_student/<int:student_id>/', views.update_student, name='update_student'), 
+    path('update_student/<int:student_id>/', views.update_student, name='update_student'),
+    path('class-6/update/<int:student_id>/', views.update_student_class_6, name='update_student_class_6'),
+    path('class-7/update/<int:student_id>/', views.update_student_class_7, name='update_student_class_7'),
+    path('class-8/update/<int:student_id>/', views.update_student_class_8, name='update_student_class_8'),
 ]
