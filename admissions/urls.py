@@ -19,4 +19,8 @@ urlpatterns = [
     path('class-6/update/<int:student_id>/', views.update_student_class_6, name='update_student_class_6'),
     path('class-7/update/<int:student_id>/', views.update_student_class_7, name='update_student_class_7'),
     path('class-8/update/<int:student_id>/', views.update_student_class_8, name='update_student_class_8'),
+    path('class-9/update/<int:student_id>/', views.update_student_class_9, name='update_student_class_9'),
+    path('class-10/update/<int:student_id>/', views.update_student_class_10, name='update_student_class_10'),
+    path('class-11/update/<int:student_id>/', views.update_student_class_11, name='update_student_class_11'),
+    path('class-12/update/<int:student_id>/', views.update_student_class_12, name='update_student_class_12'),
 ]
