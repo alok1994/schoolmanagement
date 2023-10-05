@@ -16,4 +16,7 @@ class AdmissionClassFilterForm(forms.Form):
 class StudentUpdateForm(forms.ModelForm):
     class Meta:
         model = Admission
-        fields = ['first_name', 'middle_name', 'last_name', 'father_name', 'mother_name', 'aadhar_card', 'admission_class', 'mobile_number', 'photo', 'subjects', 'date_of_birth', 'aadhar_card']
+        fields = '__all__'  # Use all fields from the Admission model
+
+# Ensure enctype attribute is set for file uploads
+StudentUpdateForm.base_fields['photo'].widget.attrs.update({'enctype': 'multipart/form-data'})

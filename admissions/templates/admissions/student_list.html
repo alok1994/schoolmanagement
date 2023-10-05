@@ -41,7 +41,7 @@
     </style>
 </head>
 <body>
-    <form method="get">
+    <form method="post" enctype="multipart/form-data">
         {{ year_filter_form.as_p }}
         {{ class_filter_form.as_p }}
         <button type="submit">Apply Filters</button>

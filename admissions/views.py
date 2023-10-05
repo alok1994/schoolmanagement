@@ -179,12 +179,13 @@ def get_student_data(request):
     return JsonResponse(student_data, safe=False)
 
 
+
 @login_required
 def update_student(request, student_id):
     student = get_object_or_404(Admission, id=student_id)
 
     if request.method == 'POST':
-        form = StudentUpdateForm(request.POST, request.FILES, instance=student)
+        form = StudentUpdateForm(request.POST, request.FILES, instance=student)  # Include request.FILES
         if form.is_valid():
             form.save()
             return redirect('student_list')  # Redirect back to the student list page
@@ -197,7 +198,7 @@ def update_student(request, student_id):
     }
 
     return render(request, 'admissions/update_student.html', context)
-
+    
 
 @login_required
 def update_student_class_6(request, student_id):
