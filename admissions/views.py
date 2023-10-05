@@ -184,7 +184,7 @@ def update_student(request, student_id):
     student = get_object_or_404(Admission, id=student_id)
 
     if request.method == 'POST':
-        form = StudentUpdateForm(request.POST, instance=student)
+        form = StudentUpdateForm(request.POST, request.FILES, instance=student)
         if form.is_valid():
             form.save()
             return redirect('student_list')  # Redirect back to the student list page
@@ -204,7 +204,7 @@ def update_student_class_6(request, student_id):
     student = get_object_or_404(Admission, id=student_id)
 
     if request.method == 'POST':
-        form = StudentUpdateForm(request.POST, instance=student)
+        form = StudentUpdateForm(request.POST, request.FILES, instance=student)
         if form.is_valid():
             form.save()
             return redirect('class_6')  # Redirect back to the class 6 page
@@ -223,7 +223,7 @@ def update_student_class_7(request, student_id):
     student = get_object_or_404(Admission, id=student_id)
 
     if request.method == 'POST':
-        form = StudentUpdateForm(request.POST, instance=student)
+        form = StudentUpdateForm(request.POST, request.FILES, instance=student)
         if form.is_valid():
             form.save()
             return redirect('class_7')  # Redirect back to the class 6 page
@@ -242,7 +242,7 @@ def update_student_class_8(request, student_id):
     student = get_object_or_404(Admission, id=student_id)
 
     if request.method == 'POST':
-        form = StudentUpdateForm(request.POST, instance=student)
+        form = StudentUpdateForm(request.POST, request.FILES, instance=student)
         if form.is_valid():
             form.save()
             return redirect('class_8')  # Redirect back to the class 6 page
@@ -261,7 +261,7 @@ def update_student_class_9(request, student_id):
     student = get_object_or_404(Admission, id=student_id)
 
     if request.method == 'POST':
-        form = StudentUpdateForm(request.POST, instance=student)
+        form = StudentUpdateForm(request.POST, request.FILES, instance=student)
         if form.is_valid():
             form.save()
             return redirect('class_9')  # Redirect back to the class 6 page
@@ -280,7 +280,7 @@ def update_student_class_10(request, student_id):
     student = get_object_or_404(Admission, id=student_id)
 
     if request.method == 'POST':
-        form = StudentUpdateForm(request.POST, instance=student)
+        form = StudentUpdateForm(request.POST, request.FILES, instance=student)
         if form.is_valid():
             form.save()
             return redirect('class_10')  # Redirect back to the class 6 page
@@ -299,7 +299,7 @@ def update_student_class_11(request, student_id):
     student = get_object_or_404(Admission, id=student_id)
 
     if request.method == 'POST':
-        form = StudentUpdateForm(request.POST, instance=student)
+        form = StudentUpdateForm(request.POST, request.FILES,  instance=student)
         if form.is_valid():
             form.save()
             return redirect('class_11')  # Redirect back to the class 6 page
@@ -318,7 +318,7 @@ def update_student_class_12(request, student_id):
     student = get_object_or_404(Admission, id=student_id)
 
     if request.method == 'POST':
-        form = StudentUpdateForm(request.POST, instance=student)
+        form = StudentUpdateForm(request.POST, request.FILES, instance=student)
         if form.is_valid():
             form.save()
             return redirect('class_12')  # Redirect back to the class 6 page

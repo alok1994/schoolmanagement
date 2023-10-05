@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
   <a href="{% url 'logout' %}?next=/students/logout/">Logout</a>
+  <p>Welcome, {{ user.username }}</p>
 <head>
     <title>School Management Dashboard</title>
 </head>
