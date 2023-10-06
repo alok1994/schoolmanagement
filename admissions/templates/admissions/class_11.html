@@ -79,3 +79,20 @@
     </table>
 </body>
 </html>
+<div class="pagination">
+    <span class="step-links">
+        {% if class_11_students.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ class_11_students.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current-page">
+            Page {{ class_11_students.number }} of {{ class_11_students.paginator.num_pages }}.
+        </span>
+
+        {% if class_11_students.has_next %}
+            <a href="?page={{ class_11_students.next_page_number }}">next</a>
+            <a href="?page={{ class_11_students.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>

@@ -6,6 +6,7 @@ from django.db.models import Max
 from datetime import datetime
 from django.utils.crypto import get_random_string
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 @login_required
 def fee_detail(request):
@@ -14,13 +15,21 @@ def fee_detail(request):
     selected_class = request.GET.get('class_filter')  # Get the selected class from the query parameter
     # Filter fees based on the selected class (if provided)
     if selected_class:
-        #import pdb;pdb.set_trace()
         class_students = Admission.objects.filter(admission_class=selected_class)
-        print(class_students)
     else:
         class_students = Admission.objects.all()
-    #    print(fees)
-    last_month_fees = Fee.objects.filter(student__in=Admission.objects.all()).values('student').annotate(last_month=Max('month'), last_month_amount=Max('amount'), last_month_payment_date=Max('payment_date'))
+
+    # Pagination
+    page = request.GET.get('page')
+    paginator = Paginator(class_students, 20)  # Display 10 students per page, you can adjust this number as needed
+
+    class_students = paginator.get_page(page)
+
+    last_month_fees = Fee.objects.filter(student__in=Admission.objects.all()).values('student').annotate(
+        last_month=Max('month'),
+        last_month_amount=Max('amount'),
+        last_month_payment_date=Max('payment_date')
+    )
 
     # Create a dictionary mapping student IDs to their last month's fee data
     last_month_fee_dict = {}
@@ -32,29 +41,14 @@ def fee_detail(request):
             'last_month_payment_date': fee['last_month_payment_date']
         }
 
-    #current_month_fees = Fee.objects.filter(student__in=Admission.objects.all()).values('student').annotate(
-    #    current_month=Max('month'),
-    #    current_month_amount=Max('amount')
-    #)
-
-    #current_month_fee_dict = {}
-    #for fee in current_month_fees:
-    #    student_id = fee['student']
-    #    current_month_fee_dict[student_id] = {
-    #        'current_month': fee['current_month'],
-    #        'current_month_amount': fee['current_month_amount']
-    #    }
-    
     last_month_fee_list = []
-    #current_month_fee_list = []
+
     for student in class_students:
         student_id = student.id
         last_month_data = last_month_fee_dict.get(student_id, {})
-        #current_month_data = current_month_fee_dict.get(student_id, {})
         last_month_fee_list.append((student, last_month_data))
-        #current_month_fee_list.append((student, current_month_data))
 
-    return render(request, 'fee_management/fee_detail.html', {'class_students': class_students, 'class_choices': class_choices, 'selected_class': selected_class, 'last_month_fee_list': last_month_fee_list,})
+    return render(request, 'fee_management/fee_detail.html', {'class_students': class_students, 'class_choices': class_choices, 'selected_class': selected_class, 'last_month_fee_list': last_month_fee_list})
 
 @login_required
 def fee_submission(request, student_id):

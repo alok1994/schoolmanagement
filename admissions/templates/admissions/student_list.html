@@ -79,3 +79,21 @@
     </table>
 </body>
 </html>
+<!-- Add this at the end of student_list.html -->
+<div class="pagination">
+    <span class="step-links">
+        {% if students.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ students.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current-page">
+            Page {{ students.number }} of {{ students.paginator.num_pages }}.
+        </span>
+
+        {% if students.has_next %}
+            <a href="?page={{ students.next_page_number }}">next</a>
+            <a href="?page={{ students.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>

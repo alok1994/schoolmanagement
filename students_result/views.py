@@ -3,19 +3,7 @@ from .models import Result
 from admissions.models import Admission
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
-
-'''@login_required
-def students_result(request):
-    # Handle filtering based on class (admission_class)
-    class_choices = Admission.objects.values_list('admission_class', flat=True).distinct()
-    selected_class = request.GET.get('class_filter')
-    if selected_class:
-        results = Admission.objects.filter(admission_class=selected_class)
-        print(results)
-    else:
-        results = Admission.objects.all()
-
-    return render(request, 'students_result/students_result.html', {'results': results, 'class_choices': class_choices, 'selected_class': selected_class})'''
+from django.core.paginator import Paginator
 
 @login_required
 def students_result(request):
@@ -24,15 +12,21 @@ def students_result(request):
     selected_class = request.GET.get('class_filter')
     if selected_class:
         results = Admission.objects.filter(admission_class=selected_class)
-        print(results)
     else:
         results = Admission.objects.all()
+
+    # Pagination
+    page = request.GET.get('page')
+    paginator = Paginator(results, 20)  # Display 10 students per page, you can adjust this number as needed
+
+    results = paginator.get_page(page)
 
     # Calculate total marks for each student
     for student in results:
         student.total_marks = calculate_total_marks(student)
 
     return render(request, 'students_result/students_result.html', {'results': results, 'class_choices': class_choices, 'selected_class': selected_class})
+
 
 def calculate_total_marks(student):
     results = Result.objects.filter(student=student)
@@ -96,27 +90,6 @@ def create_result(request, student_id):
 
     return render(request, 'students_result/create_result.html', {'student': student})
 
-'''@login_required
-def result_history(request, student_id):
-    # Retrieve the student
-    student = Admission.objects.get(id=student_id)
-
-    # Get the selected exam type from the request
-    exam_type = request.GET.get('exam_type', '')  # Default to empty string if not provided
-
-    # Filter the result history based on the selected exam type
-    result_history = Result.objects.filter(student=student)
-    if exam_type:
-        result_history = result_history.filter(exam_type=exam_type)
-
-    # Pass the filtered result history and student to the template
-    context = {
-        'student': student,
-        'result_history': result_history,
-        'selected_exam_type': exam_type,  # Pass the selected exam type to pre-select the dropdown
-    }
-
-    return render(request, 'students_result/result_history.html', context)'''
 
 @login_required
 def result_history(request, student_id):
