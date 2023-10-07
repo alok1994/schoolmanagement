@@ -1,6 +1,6 @@
 <!-- Filter Form -->
 <a href="{% url 'dashboard' %}">Go to Dashboard</a>
-<a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'logout' %}" style="float: right;">Logout</a>
 <h3> Students Result Details </h3>
 <form method="get">
     <label for="class_filter">Select Class:</label>
@@ -47,7 +47,7 @@
     <tbody>
         {% for student in results %}
             <tr>
-                <td>{{ student.first_name }} {{ student.last_name }}</td>
+                <td>{{ student.first_name }} {{student.middle_name}} {{ student.last_name }}</td>
                 <td>{{ student.father_name }}</td>
                 <td>{{ student.mother_name }}</td>
                 <td>

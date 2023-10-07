@@ -2,11 +2,11 @@
 
 <!DOCTYPE html>
 <a href="{% url 'dashboard' %}">Go to Dashboard</a>
-<a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'logout' %}" style="float: right;">Logout</a>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Student Details</title>
+    <title>Student Fee Details</title>
     <style>
         table {
             width: 100%;
@@ -23,7 +23,7 @@
     </style>
 </head>
 <body>
-    <h1>Student Details</h1>
+    <h2>Student Fee Details</h2>
 
     <!-- Filter dropdown for selecting a class -->
     <form method="get">
