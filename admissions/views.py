@@ -23,13 +23,13 @@ def student_list(request):
     students = Admission.objects.all()
 
     # Apply filters if provided in the GET request
-    year_filter_form = AdmissionYearFilterForm(request.GET)
+    year_filter_form = AdmissionYearFilterForm(request.POST)
     if year_filter_form.is_valid():
         admission_year = year_filter_form.cleaned_data.get('admission_year')
         if admission_year:
             students = students.filter(admission_date__year=admission_year)
 
-    class_filter_form = AdmissionClassFilterForm(request.GET)
+    class_filter_form = AdmissionClassFilterForm(request.POST)
     if class_filter_form.is_valid():
         admission_class = class_filter_form.cleaned_data.get('admission_class')
         if admission_class:
