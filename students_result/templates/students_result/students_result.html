@@ -42,6 +42,7 @@
             <th>Father's Name</th>
             <th>Mother's Name</th>
             <th>Create Result</th>
+            <th>View Result</th>
         </tr>
     </thead>
     <tbody>
@@ -52,7 +53,9 @@
                 <td>{{ student.mother_name }}</td>
                 <td>
                     <a href="{% url 'create_result' student.id %}" class="create-result-button">Create Result</a>
-                    <a href="{% url 'result_history' student.id %}" class="result-history-button">View Result History</a>
+                </td>
+                <td>
+                    <a href="{% url 'result_history' student.id %}" class="result-history-button">View Result</a>
                 </td>
             </tr>
         {% empty %}
