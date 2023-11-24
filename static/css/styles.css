@@ -128,3 +128,6 @@ img {
     width: calc(100% - 258px);
     height: 64px;
 }
+header {
+    float: right;
+}
