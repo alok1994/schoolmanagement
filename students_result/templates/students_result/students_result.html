@@ -1,12 +1,31 @@
-<!-- Filter Form -->
-<a href="{% url 'dashboard' %}">Go to Dashboard</a>
-<a href="{% url 'logout' %}" style="float: right;">Logout</a>
-<h3> Students Result Details </h3>
-<form method="get">
-    <label for="class_filter">Select Class:</label>
-    <select id="class_filter" name="class_filter">
-        <option value="">All</option>
-        {% for choice in class_choices %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Result List</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <script src="/static/jquery.min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid full-width">
+        {% include 'sidebar.html' %}
+        <div class="content col-sm-10">
+            {% include 'header.html' %}
+            <div class="content-header">
+                <h3> Students Result Details </h3>
+                <p></p>
+            </div>
+    <form method="get">
+        <label for="class_filter">Select Class:</label>
+        <select id="class_filter" name="class_filter">
+            <option value="">All</option>
+            {% for choice in class_choices %}
             <option value="{{ choice }}" {% if selected_class == choice %}selected{% endif %}>
                 {{ choice }}
             </option>
@@ -14,26 +33,6 @@
     </select>
     <button type="submit">Filter</button>
 </form>
-
-<!-- Add Inline CSS Styles for the Table -->
-<style>
-    /* Table Styles */
-    .student-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    .student-table th, .student-table td {
-        border: 1px solid #dddddd;
-        padding: 8px;
-        text-align: left;
-    }
-
-    .student-table th {
-        background-color: #f2f2f2;
-    }
-</style>
-
 <!-- Display Students and Their Details in a Table -->
 <table class="student-table">
     <thead>
@@ -81,3 +80,7 @@
         {% endif %}
     </span>
 </div>
+        </div>
+    </div>
+</body>
+</html>

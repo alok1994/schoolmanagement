@@ -54,7 +54,7 @@ def fee_detail(request):
 def fee_submission(request, student_id):
     try:
         student = Admission.objects.get(id=student_id)  # Retrieve the student using student_id
-    except Student.DoesNotExist:
+    except student.DoesNotExist:
         # Handle the case where the student with the given ID does not exist
         # You can raise an error, redirect to an error page, or handle it as needed
         return redirect('error_page')  # Replace 'error_page' with your desired URL name

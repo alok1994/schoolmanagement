@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from .forms import StudentUpdateForm
 from django.core.paginator import Paginator
+from django.contrib.auth.models import User
 
 @login_required
 def admission_form(request):
@@ -21,7 +22,6 @@ def admission_form(request):
 @login_required
 def student_list(request):
     students = Admission.objects.all()
-
     # Apply filters if provided in the GET request
     year_filter_form = AdmissionYearFilterForm(request.POST)
     if year_filter_form.is_valid():
@@ -406,3 +406,11 @@ def update_student_class_12(request, student_id):
     }
 
     return render(request, 'admissions/update_student.html', context)
+
+def get_user_count(request):
+    # Retrieve the user count from the User model
+    user_count = User.objects.count()
+    
+    # Create a JSON response with the user count
+    response_data = {'total_users': user_count}
+    return JsonResponse(response_data)

@@ -23,4 +23,5 @@ urlpatterns = [
     path('class-10/update/<int:student_id>/', views.update_student_class_10, name='update_student_class_10'),
     path('class-11/update/<int:student_id>/', views.update_student_class_11, name='update_student_class_11'),
     path('class-12/update/<int:student_id>/', views.update_student_class_12, name='update_student_class_12'),
+    path('api/user-count/', views.get_user_count, name='user_count_api'),
 ]

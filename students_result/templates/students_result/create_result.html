@@ -1,29 +1,27 @@
 <!DOCTYPE html>
-<a href="{% url 'dashboard' %}">Go to Dashboard</a>
-<a href="{% url 'logout' %}" style="float: right;">Logout</a>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Result</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        table, th, td {
-            border: 1px solid black;
-        }
-
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-    </style>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <script src="/static/jquery.min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h4>Student Information</h4>
+    <div class="container-fluid full-width">
+        {% include 'sidebar.html' %}
+        <div class="content col-sm-10">
+            {% include 'header.html' %}
+            <div class="content-header">
+                <h1>Student Information</h1>
+                <p></p>
+            </div>
     <ul>
         <li><strong>Student Name:</strong> {{ student.first_name }} {{ student.last_name }}</li>
         <li><strong>Father's Name:</strong> {{ student.father_name }}</li>
@@ -123,7 +121,6 @@
         </div>
         <button type="submit">Submit Result</button>
     </form>
-    <a href="{% url 'students_result' %}">Back to Students Result</a>
 
 <!-- Add this script section at the end of your HTML file -->
 <script>
@@ -164,7 +161,8 @@
     // Initialize totals on page load
     updateTotals();
 </script>
-
+        </div>
+    </div>
 </body>
 </html>
 

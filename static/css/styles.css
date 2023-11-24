@@ -1,0 +1,130 @@
+.sidebar {
+    min-height: calc(100vh - 64px);
+    background: #181824;
+    font-family: "nunito-medium", sans-serif;
+    padding: 0;
+    width: 258px;
+    z-index: 11;
+    transition: width 0.25s ease, background 0.25s ease;
+    -webkit-transition: width 0.25s ease, background 0.25s ease;
+    -moz-transition: width 0.25s ease, background 0.25s ease;
+    -ms-transition: width 0.25s ease, background 0.25s ease;
+}
+
+.sidebar .nav .nav-item .nav-link i.menu-arrow {
+    font: normal normal normal 24px/1 "Material Design Icons";
+    line-height: 1;
+    font-size: 1.125rem;
+    margin-left: auto;
+    color: rgba(255, 255, 255, 0.36);
+}
+.sidebar .nav .nav-item .nav-link .icon-bg {
+    margin-right: 0.875rem;
+    background: rgba(194, 244, 219, 0.12);
+    height: 24px;
+    width: 24px;
+    position: relative;
+    z-index: 2;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.sidebar .nav .nav-item .nav-link {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    white-space: nowrap;
+    padding: 0.625rem 0 0.625rem 0;
+    color: #8e94a9;
+    -webkit-transition-duration: 0.45s;
+    transition-duration: 0.45s;
+    transition-property: color;
+    -webkit-transition-property: color;
+    text-overflow: ellipsis;
+}
+
+.sidebar .nav .nav-item {
+    padding: 0 2.375rem;
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+    transition-property: background;
+    -webkit-transition-property: background;
+    position: relative;
+}
+
+.sidebar .nav .nav-item .collapse {
+    z-index: 999;
+}
+
+.sidebar .nav .nav-item.sidebar-user-actions .user-details .sidebar-profile-img {
+    margin-right: 12px;
+    float: left;
+}
+.sidebar .nav .nav-item.sidebar-user-actions .user-details .sidebar-profile-text {
+    color: #ffffff;
+}
+img {
+    vertical-align: middle;
+    width: 30px;
+}
+.mb-1, .my-1 {
+    margin-bottom: 1.25rem !important;
+}
+
+.sidebar .nav .nav-item.sidebar-user-actions .sidebar-user-menu .nav-link i {
+    font-size: 18px;
+    margin-right: 12px;
+}
+
+.navbar {
+    font-family: "nunito-medium", sans-serif;
+    background: #ffffff;
+    transition: background 0.25s ease;
+    -webkit-transition: background 0.25s ease;
+    -moz-transition: background 0.25s ease;
+    -ms-transition: background 0.25s ease;
+    font-family: "nunito-medium", sans-serif;
+}
+.navbar .navbar-brand-wrapper {
+    transition: width 0.25s ease, background 0.25s ease;
+    -webkit-transition: width 0.25s ease, background 0.25s ease;
+    -moz-transition: width 0.25s ease, background 0.25s ease;
+    -ms-transition: width 0.25s ease, background 0.25s ease;
+    background: #181824;
+    width: 258px;
+    height: 64px;
+}
+.navbar .navbar-brand-wrapper .navbar-brand {
+    color: #27367f;
+    font-size: 1.5rem;
+    line-height: 48px;
+    margin-right: 0;
+    padding: 0.25rem 0;
+    width: 100%;
+}
+.navbar .navbar-brand-wrapper .navbar-brand.brand-logo-mini {
+    display: none;
+}
+.navbar .navbar-menu-wrapper {
+    transition: width 0.25s ease;
+    -webkit-transition: width 0.25s ease;
+    -moz-transition: width 0.25s ease;
+    -ms-transition: width 0.25s ease;
+    color: #111111;
+    padding-left: 24px;
+    padding-right: 24px;
+    width: calc(100% - 258px);
+    height: 64px;
+}

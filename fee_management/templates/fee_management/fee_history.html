@@ -1,10 +1,28 @@
-<!-- fee_history.html -->
-<a href="{% url 'fee_detail' %}">Go to Fee Details</a>
-<a href="{% url 'logout' %}" style="float: right;">Logout</a>
-<h2>Fee History for {{ student.first_name }} {{ student.last_name }}</h2>
-
-<table border="1">
-  <thead>
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Fee History</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <script src="/static/jquery.min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container-fluid full-width">
+      {% include 'sidebar.html' %}
+      <div class="content col-sm-10">
+        {% include 'header.html' %}
+        <div class="content-header">
+          <h2>Fee History for {{ student.first_name }} {{ student.last_name }}</h2>
+          <p></p>
+        </div>
+    <table border="1">
+    <thead>
     <tr>
       <th>Payment Date</th>
       <th>Month</th> <!-- Add a column for the month -->
@@ -23,5 +41,8 @@
     {% endfor %}
   </tbody>
 </table>
-
+</div>
+</div>
+</body>
+</html>
 <!-- Add any additional content or formatting as needed -->

@@ -4,16 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Student Details</title>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <script src="/static/jquery.min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Update Student Details</h1>
-    
+    <div class="container-fluid full-width">
+        {% include 'sidebar.html' %}
+        <div class="content col-sm-10">
+            {% include 'header.html' %}
+            <div class="content-header">
+                <h1>Update Student Details</h1>
+                <p></p>
+            </div>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }} <!-- Display the form fields as paragraphs -->
+        {{ form.as_p }}
         <button type="submit">Update</button>
     </form>
     
-    <a href="{% url 'student_list' %}">Back to Student List</a> <!-- Add a link to go back to the student list page -->
+    <a href="{% url 'student_list' %}">Back to Student List</a> 
+        </div>
+    </div>
 </body>
 </html>

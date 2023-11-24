@@ -1,99 +1,28 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <title>Admission Form</title>
-  <style>
-form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 2px solid #14faf8;
-    background-color: #d0e7e8;
-    border-radius: 5px;
-}
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    font-weight: bold;
-}
-
-/* Style for input fields */
-input[type="text"],
-input[type="date"],
-input[type="file"],
-textarea,
-select {
-    width: 95%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-size: 16px;
-}
-
-/* Style for the submit button */
-.submit-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-/* Style for links */
-a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-/* Style for the logout link */
-a[href*="logout"] {
-    float: right;
-}
-
-/* Style for the name fields to display inline */
-.form-group.name-group {
-    display: flex;
-    justify-content: space-between;
-}
-
-.form-group.name-group input[type="text"] {
-    flex: 1;
-    margin-right: 10px;
-}
-
-/* Clearfix for form groups with floating elements */
-.form-group::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-.form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
-    height: 100vh; 
-}
-h2 {
-    text-align: center;
-}
-  </style>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <script src="/static/jquery.min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <a href="{% url 'dashboard' %}">Dashboard</a>
-    <a href="{% url 'logout' %}" style="float: right;">Logout</a>
-
-    <h2>Admission Form </h2>
-
-    <form method="POST" enctype="multipart/form-data">
+    <div class="container-fluid full-width">
+        {% include 'sidebar.html' %}
+        <div class="content col-sm-10">
+            {% include 'header.html' %}
+            <div class="content-header">
+                <h2>Admission Form </h2>
+                <p></p>
+            </div>
+        <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
             <label for="first_name">First Name:</label>
@@ -166,7 +95,8 @@ h2 {
         </div>
 
         <button type="submit" class="submit-button">Submit</button>
-    </form>
+        </form>
+        </div>
+    </div>
 </body>
-
 </html>

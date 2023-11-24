@@ -1,5 +1,3 @@
-<!-- fee_management/templates/fee_management/fee_submission.html -->
-
 <!DOCTYPE html>
 <a href="{% url 'fee_detail' %}">Go to Fee Details</a>
 <a href="{% url 'logout' %}" style="float: right;">Logout</a>
@@ -7,9 +5,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Fee Submission</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <script src="/static/jquery.min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h2>Fee Submission for {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</h2>
+    <div class="container-fluid full-width">
+        {% include 'sidebar.html' %}
+        <div class="content col-sm-10">
+            {% include 'header.html' %}
+            <div class="content-header">
+                <h2>Fee Submission for {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</h2>
+                <p></p>
+            </div>
     <form method="post">
         {% csrf_token %}
         {{ fee_form.as_p }}
@@ -18,5 +31,7 @@
     {% if fee.id %}
     <a href="{% url 'generate_receipt' fee.id %}">Generate Receipt</a>
     {% endif %}
+        </div>
+    </div>
 </body>
 </html>

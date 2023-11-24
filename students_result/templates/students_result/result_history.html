@@ -1,6 +1,26 @@
-<a href="{% url 'students_result' %}">Back to Students Result</a>
-<a href="{% url 'logout' %}" style="float: right;">Logout</a>
-<h4>Result History for {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</h4>
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Result History</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <script src="/static/jquery.min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+   </head>
+<body>
+    <div class="container-fluid full-width">
+        {% include 'sidebar.html' %}
+        <div class="content col-sm-10">
+            {% include 'header.html' %}
+            <div class="content-header">
+                <h4>Result History for {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</h4>
+                <p></p>
+            </div>
 <form method="get">
     <label for="exam_type">Select Exam Type:</label>
     <select id="exam_type" name="exam_type">
@@ -105,4 +125,7 @@
         printButton.addEventListener('click', printResultHistory);
     }
 </script>
-
+        </div>
+    </div>
+</body>
+</html>
