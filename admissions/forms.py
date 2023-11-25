@@ -7,6 +7,8 @@ class AdmissionForm(forms.ModelForm):
         model = Admission
         fields = '__all__'
 
+    photo = forms.ImageField(required=False)
+    
 class AdmissionYearFilterForm(forms.Form):
     admission_year = forms.IntegerField(label='Year of Admission', required=False)
 

@@ -13,8 +13,13 @@ def admission_form(request):
     if request.method == 'POST':
         form = AdmissionForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('student_list')
+            if 'photo' in request.FILES:
+                photo = request.FILES['photo']
+                print(f'Uploaded file name: {photo.name}')
+            else:
+                print("No photo attached in the form.")
+        admission = form.save()
+        return redirect('student_details', student_id=admission.id)
     else:
         form = AdmissionForm()
     return render(request, 'admissions/admission_form.html', {'form': form})

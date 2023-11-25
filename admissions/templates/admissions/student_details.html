@@ -21,7 +21,13 @@
                 <h1>Student Details</h1>
                 <p></p>
             </div>
-    <img src="{{ student.photo.url }}" alt="{{ student.first_name }} {{ student.last_name }} Photo" width="100">
+    <td rowspan="3">
+        {% if student.photo %}
+            <img src="{{ student.photo.url }}" alt="{{ student.first_name }} {{ student.last_name }} Photo" width="150">
+        {% else %}
+            <p>No photo attached</p>
+        {% endif %}
+    </td>
     <p>Student's Name: {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</p>
     <p>Father's Name: {{ student.father_name }}</p>
     <p>Mother's Name: {{ student.mother_name }}</p>
@@ -34,6 +40,5 @@
     <p>Admission Date: {{ student.admission_date }}</p>
     <p>Mobile Number: {{ student.mobile_number }}</p>
     <p>Subjects: {{ student.subjects }}</p>
-    <a href="{% url 'student_list' %}">Back to Student List</a>
 </body>
 </html>
