@@ -71,11 +71,11 @@
         </tbody>
         </table>
         </div>
-    </div>
-    <div class="confirmation-popup" id="confirmationPopup">
-        <p id="confirmationMessage"></p>
-        <button id="confirmButton" class="btn btn-success">OK</button>
-        <button id="cancelButton"  class="btn btn-danger">Cancel</button>
+        <div class="confirmation-popup" id="confirmationPopup">
+            <p id="confirmationMessage"></p>
+            <button id="confirmButton" class="btn btn-success">OK</button>
+            <button id="cancelButton"  class="btn btn-danger">Cancel</button>
+        </div>
     </div>
 <div class="pagination">
     <span class="step-links">
@@ -104,6 +104,8 @@
             const confirmationMessage = `Are you sure you want to delete ${studentName}?`;
             
             document.getElementById('confirmationMessage').textContent = confirmationMessage;
+            document.getElementById('confirmButton').style.display = 'inline-block';
+            document.getElementById('cancelButton').style.display = 'inline-block';
             document.getElementById('confirmationPopup').style.display = 'block';
             
             // Add event listener for the "OK" button
@@ -113,6 +115,8 @@
 
             // Add event listener for the "Cancel" button
             document.getElementById('cancelButton').addEventListener('click', function () {
+                document.getElementById('confirmButton').style.display = 'none';
+                document.getElementById('cancelButton').style.display = 'none';
                 document.getElementById('confirmationPopup').style.display = 'none'; // Close the popup
             });
         });

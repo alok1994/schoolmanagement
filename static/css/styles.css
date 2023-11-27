@@ -131,3 +131,25 @@ img {
 header {
     float: right;
 }
+#confirmationPopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    z-index: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#confirmationMessage {
+    margin-bottom: 20px;
+}
+
+#confirmButton,
+#cancelButton {
+    display: none;
+    margin-right: 10px;
+}
