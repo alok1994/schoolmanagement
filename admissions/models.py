@@ -21,6 +21,8 @@ class Admission(models.Model):
     admission_date = models.DateField(auto_now_add=True)
     mobile_number = models.CharField(max_length=15)
     subjects = models.CharField(max_length=100, blank=True, null=True)
+    gender = models.CharField(max_length=40, blank=True)
+    current_class = models.CharField(max_length=50)
     
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

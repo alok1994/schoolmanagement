@@ -5,7 +5,7 @@ from .models import Admission
 class AdmissionForm(forms.ModelForm):
     class Meta:
         model = Admission
-        fields = '__all__'
+        exclude = ['current_class']
 
     photo = forms.ImageField(required=False)
     
@@ -18,7 +18,7 @@ class AdmissionClassFilterForm(forms.Form):
 class StudentUpdateForm(forms.ModelForm):
     class Meta:
         model = Admission
-        fields = '__all__'  # Use all fields from the Admission model
+        exclude = ['admission_class']
 
 # Ensure enctype attribute is set for file uploads
 StudentUpdateForm.base_fields['photo'].widget.attrs.update({'enctype': 'multipart/form-data'})

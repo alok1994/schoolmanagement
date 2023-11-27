@@ -1,74 +1,130 @@
-<!-- receipt.html -->
-<style>
-    /* Define print-specific styles within a @media print rule */
-    @media print {
-      body {
-        font-size: 12pt;
-        margin: 0; /* Remove default page margins */
-      }
-  
-      /* Additional print-specific styles for your receipt content */
-      h2 {
-        font-size: 16pt;
-        text-align: center;
-      }
-  
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-  
-      table, th, td {
-        border: 1px solid #000; /* Add borders to table elements */
-      }
-  
-      /* Adjust other styles as needed for printing */
-    }
-  </style>
-<a href="{% url 'fee_detail' %}">Go to Fee Details</a>
-<h2>Receipt for Fee Submission</h2>
-<p>Fee ID: {{ fee.id }}</p>
-<p>Receipt Number: {{ fee.receipt_number }}</p>
-<table>
-  <tr>
-    <td>Student Name:</td>
-    <td>{{ student.first_name }} {{student.middle_name}} {{ student.last_name }}</td>
-  </tr>
-  <tr>
-    <td>Father's Name:</td>
-    <td>{{ student.father_name }}</td>
-  </tr>
-  <tr>
-    <td>Class:</td>
-    <td>{{ student.admission_class }}</td>
-  </tr>
-  <tr>
-    <td>Date of Payment:</td>
-    <td>{{ fee.payment_date }}</td>
-  </tr>
-  <tr>
-    <td>Fee Month:</td>
-    <td>{{ fee.month }}</td>
-  </tr>
-</table>
-
-<div class="signature-block">
-  <div class="student-signature">
-    <p>Student's Signature</p>
-    <!-- Add space for the student's signature -->
-  </div>
-  <div class="receiver-signature">
-    <p>Receiver's Signature</p>
-    <!-- Add space for the receiver's signature -->
-  </div>
-  <button id="print-button">Print Receipt</button>
-</div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Add the JavaScript code to handle the Print button click -->
-<script>
-  $(document).ready(function() {
-    $('#print-button').on('click', function() {
-      window.print(); // Trigger the browser's print dialog
-    });
-  });
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+        {% load static %}
+        <title>Receipt for Fee Submission</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/static/bootstrap.min.css">
+        <script src="/static/jquery.min.js"></script>
+        <script src="/static/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid full-width feereceipt charac_cert">
+        {% include 'sidebar.html' %}
+        
+          <div class="content col-sm-10">
+            {% include 'header.html' %}
+            <div class="static-box trans_cer">
+                <div class="col-sm-4">
+                    <div class="combined-info">
+                    </div>
+                  </div>
+                  <div class="character_cer col-sm-8">           
+              </div> 
+              <div class="clearfix"></div>
+                <div class="student-details clearfix">
+                    <div class="col-sm-6">
+                        <p><b>Student Name:</b> {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p><b>Father Name:</b> {{ student.father_name }}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-6">
+                        <p><b>Mother Name:</b> {{ student.mother_name }}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p><b>Class:</b> {{ student.current_class }} </p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-6">
+                        <p><b>Date of Payment:</b> {{ fee.payment_date }}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p><b>Receipt Number:</b> {{ fee.receipt_number }}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <table class="student_list_tab" style="margin-left: 0px;">
+                    <thead>
+                        <tr>
+                            <th>S N</th>
+                            <th>Particulars</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Registration Fee</td>
+                            <td>{{ fee.registration_fee }}</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Tuition Fee</td>
+                            <td>{{ fee.tuition_fee }}</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Exam Fee</td>
+                            <td>{{ fee.exam_fee }}</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Sports Fee</td>
+                            <td>{{ fee.sports_fee }}</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Miscellaneous Fee</td>
+                            <td>{{ fee.miscellaneous_fee }}</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Late Fee</td>
+                            <td>{{ fee.late_fee }}</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Discount Fee</td>
+                            <td>{{ fee.discount_fee }}</td>
+                        </tr>
+                        <!-- Add more fee particulars as needed -->
+                    </tbody>
+                </table>
+                <div class="total-section">
+                    <p><b>Total Amount:</b> ₹{{ fee.total_paid_amount }} </p>
+                    <p><b>Total Amount In Words: </b> {{ fee.total_amount_in_words }} Rupees Only </p>
+                </div>
+                <div class="footer">
+                    <div class="signature-block">
+                        <div class="student-signature col-sm-6">
+                            <p>Student's Signature</p>
+                            <!-- Add space for the student's signature -->
+                        </div>
+                        <div class="receiver-signature col-sm-6">
+                            <p>Receiver's Signature</p>
+                            <!-- Add space for the receiver's signature -->
+                        </div>
+                    </div>
+                    <button id="print-button" class="details_btn">Print Receipt</button>
+                </div>
+            </div>    
+        </div>
+    </div>
+   
+        <!-- Include jQuery for the print button functionality -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Add the JavaScript code to handle the Print button click -->
+    <script>
+        $(document).ready(function() {
+            $('#print-button').on('click', function() {
+                window.print(); // Trigger the browser's print dialog
+            });
+        });
+    </script>
+</body>
+</html>

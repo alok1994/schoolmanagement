@@ -7,19 +7,30 @@ from django.contrib.auth.decorators import login_required
 from .forms import StudentUpdateForm
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
+from django.contrib import messages
+from django.urls import reverse
+
 
 @login_required
 def admission_form(request):
     if request.method == 'POST':
         form = AdmissionForm(request.POST, request.FILES)
         if form.is_valid():
+            
+            admission_class = form.cleaned_data['admission_class']
+            form.instance.current_class = admission_class
+        
             if 'photo' in request.FILES:
                 photo = request.FILES['photo']
                 print(f'Uploaded file name: {photo.name}')
             else:
                 print("No photo attached in the form.")
-        admission = form.save()
-        return redirect('student_details', student_id=admission.id)
+            
+            admission = form.save()
+            return redirect('student_details', student_id=admission.id)
+        else:
+            print(form.errors)
     else:
         form = AdmissionForm()
     return render(request, 'admissions/admission_form.html', {'form': form})
@@ -252,6 +263,7 @@ def get_student_data(request):
             'middle_name': student.middle_name,
             'last_name': student.last_name,
             'admission_class': student.admission_class,
+            'current_class': student.current_class,
         }
         for student in students
     ]
@@ -266,8 +278,15 @@ def update_student(request, student_id):
     if request.method == 'POST':
         form = StudentUpdateForm(request.POST, request.FILES, instance=student)  # Include request.FILES
         if form.is_valid():
+            if 'photo' in request.FILES:
+                photo = request.FILES['photo']
+                print(f'Uploaded file name: {photo.name}')
+            else:
+                print("No photo attached in the form.")
             form.save()
             return redirect('student_list')  # Redirect back to the student list page
+        else:
+            print(form.errors)
     else:
         form = StudentUpdateForm(instance=student)
 
@@ -286,6 +305,11 @@ def update_student_class_6(request, student_id):
     if request.method == 'POST':
         form = StudentUpdateForm(request.POST, request.FILES, instance=student)
         if form.is_valid():
+            if 'photo' in request.FILES:
+                photo = request.FILES['photo']
+                print(f'Uploaded file name: {photo.name}')
+            else:
+                print("No photo attached in the form.")
             form.save()
             return redirect('class_6')  # Redirect back to the class 6 page
     else:
@@ -305,6 +329,11 @@ def update_student_class_7(request, student_id):
     if request.method == 'POST':
         form = StudentUpdateForm(request.POST, request.FILES, instance=student)
         if form.is_valid():
+            if 'photo' in request.FILES:
+                photo = request.FILES['photo']
+                print(f'Uploaded file name: {photo.name}')
+            else:
+                print("No photo attached in the form.")
             form.save()
             return redirect('class_7')  # Redirect back to the class 6 page
     else:
@@ -324,6 +353,11 @@ def update_student_class_8(request, student_id):
     if request.method == 'POST':
         form = StudentUpdateForm(request.POST, request.FILES, instance=student)
         if form.is_valid():
+            if 'photo' in request.FILES:
+                photo = request.FILES['photo']
+                print(f'Uploaded file name: {photo.name}')
+            else:
+                print("No photo attached in the form.")
             form.save()
             return redirect('class_8')  # Redirect back to the class 6 page
     else:
@@ -343,6 +377,11 @@ def update_student_class_9(request, student_id):
     if request.method == 'POST':
         form = StudentUpdateForm(request.POST, request.FILES, instance=student)
         if form.is_valid():
+            if 'photo' in request.FILES:
+                photo = request.FILES['photo']
+                print(f'Uploaded file name: {photo.name}')
+            else:
+                print("No photo attached in the form.")
             form.save()
             return redirect('class_9')  # Redirect back to the class 6 page
     else:
@@ -362,6 +401,11 @@ def update_student_class_10(request, student_id):
     if request.method == 'POST':
         form = StudentUpdateForm(request.POST, request.FILES, instance=student)
         if form.is_valid():
+            if 'photo' in request.FILES:
+                photo = request.FILES['photo']
+                print(f'Uploaded file name: {photo.name}')
+            else:
+                print("No photo attached in the form.")
             form.save()
             return redirect('class_10')  # Redirect back to the class 6 page
     else:
@@ -381,6 +425,11 @@ def update_student_class_11(request, student_id):
     if request.method == 'POST':
         form = StudentUpdateForm(request.POST, request.FILES,  instance=student)
         if form.is_valid():
+            if 'photo' in request.FILES:
+                photo = request.FILES['photo']
+                print(f'Uploaded file name: {photo.name}')
+            else:
+                print("No photo attached in the form.")
             form.save()
             return redirect('class_11')  # Redirect back to the class 6 page
     else:
@@ -400,6 +449,11 @@ def update_student_class_12(request, student_id):
     if request.method == 'POST':
         form = StudentUpdateForm(request.POST, request.FILES, instance=student)
         if form.is_valid():
+            if 'photo' in request.FILES:
+                photo = request.FILES['photo']
+                print(f'Uploaded file name: {photo.name}')
+            else:
+                print("No photo attached in the form.")
             form.save()
             return redirect('class_12')  # Redirect back to the class 6 page
     else:
@@ -407,7 +461,7 @@ def update_student_class_12(request, student_id):
 
     context = {
         'student': student,
-        'form': form,
+        'form': form, 
     }
 
     return render(request, 'admissions/update_student.html', context)
@@ -419,3 +473,10 @@ def get_user_count(request):
     # Create a JSON response with the user count
     response_data = {'total_users': user_count}
     return JsonResponse(response_data)
+
+@login_required
+def delete_student(request, student_id):
+    student = get_object_or_404(Admission, id=student_id)
+    student.delete()
+    messages.success(request, 'Student deleted successfully.')
+    return HttpResponseRedirect(reverse('student_list')) 

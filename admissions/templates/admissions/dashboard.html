@@ -176,12 +176,11 @@
                                 '#dd4b39',
                                 'Blue',
                                 'Pink'
-                                // Add more colors if needed
                             ];
 
                             // Process the data and populate classData object
                             data.forEach(student => {
-                                const className = student.admission_class;
+                                const className = student.current_class;
                                 if (!classData[className]) {
                                     classData[className] = 1;
                                 } else {
@@ -213,37 +212,37 @@
                             });
 
                             // Update Class 6 count
-                            const class6Data = data.filter(student => student.admission_class === '6');
+                            const class6Data = data.filter(student => student.current_class === '6');
                             const class6CountElement = document.getElementById('class6Count');
                             const class6Count = class6Data.length;
                             class6CountElement.textContent = class6Count;
 
-                            const class7Data = data.filter(student => student.admission_class === '7');
+                            const class7Data = data.filter(student => student.current_class === '7');
                             const class7CountElement = document.getElementById('class7Count');
                             const class7Count = class7Data.length;
                             class7CountElement.textContent = class7Count;
 
-                            const class8Data = data.filter(student => student.admission_class === '8');
+                            const class8Data = data.filter(student => student.current_class === '8');
                             const class8CountElement = document.getElementById('class8Count');
                             const class8Count = class8Data.length;
                             class8CountElement.textContent = class8Count;
 
-                            const class9Data = data.filter(student => student.admission_class === '9');
+                            const class9Data = data.filter(student => student.current_class === '9');
                             const class9CountElement = document.getElementById('class9Count');
                             const class9Count = class9Data.length;
                             class9CountElement.textContent = class9Count;
 
-                            const class10Data = data.filter(student => student.admission_class === '10');
+                            const class10Data = data.filter(student => student.current_class === '10');
                             const class10CountElement = document.getElementById('class10Count');
                             const class10Count = class10Data.length;
                             class10CountElement.textContent = class10Count;
 
-                            const class11Data = data.filter(student => student.admission_class === '11');
+                            const class11Data = data.filter(student => student.current_class === '11');
                             const class11CountElement = document.getElementById('class11Count');
                             const class11Count = class11Data.length;
                             class11CountElement.textContent = class11Count;
 
-                            const class12Data = data.filter(student => student.admission_class === '12');
+                            const class12Data = data.filter(student => student.current_class === '12');
                             const class12CountElement = document.getElementById('class12Count');
                             const class12Count = class12Data.length;
                             class12CountElement.textContent = class12Count;
