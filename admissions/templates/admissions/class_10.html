@@ -15,7 +15,7 @@
 <body>
     <div class="container-fluid full-width">
         {% include 'sidebar.html' %}
-        <div class="content col-sm-10">
+        <div class="content col-sm-10 col-sm-offset-2">
             {% include 'header.html' %}
             <div class="content-header">
                 <h1>Class 10th Student List</h1>
@@ -44,7 +44,7 @@
         <tbody>
             {% for student in class_10_students %}
                 <tr>
-                    <td rowspan="3">
+                    <td>
                         {% if student.photo %}
                             <img src="{{ student.photo.url }}" alt="{{ student.first_name }} {{ student.last_name }} Photo" width="150">
                         {% else %}

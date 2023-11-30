@@ -226,4 +226,47 @@ body {
   .btn.btn-primary:hover {
     opacity: 0.8;
   }
-  
+  #sidebar{
+    position:fixed;
+    height: 100%;
+  }
+  .container-fluid.full-width{
+    padding: 0px !important;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+}
+  table.student_list_tab {
+      background-color: #fff;
+      padding: 10px;
+  }
+  table.student_list_tab tr:nth-child(even) {
+      background-color: #f9f9f9;
+  }
+  table.student_list_tab tr:hover {
+      box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.075);
+  }
+  table.student_list_tab th, table.student_list_tab td {
+      font-size: 12px;
+      text-transform: capitalize;
+  }
+  table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: gray;
+}
+th {
+  display: table-cell;
+  vertical-align: inherit;
+  font-weight: bold;
+  text-align: -internal-center;
+}
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
