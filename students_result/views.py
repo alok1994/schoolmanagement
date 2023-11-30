@@ -8,10 +8,10 @@ from django.core.paginator import Paginator
 @login_required
 def students_result(request):
     # Handle filtering based on class (admission_class)
-    class_choices = Admission.objects.values_list('admission_class', flat=True).distinct()
+    class_choices = Admission.objects.values_list('current_class', flat=True).distinct()
     selected_class = request.GET.get('class_filter')
     if selected_class:
-        results = Admission.objects.filter(admission_class=selected_class)
+        results = Admission.objects.filter(current_class=selected_class)
     else:
         results = Admission.objects.all()
 

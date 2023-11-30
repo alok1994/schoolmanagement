@@ -47,7 +47,7 @@ def student_list(request):
 
     class_filter_form = AdmissionClassFilterForm(request.POST)
     if class_filter_form.is_valid():
-        admission_class = class_filter_form.cleaned_data.get('admission_class')
+        admission_class = class_filter_form.cleaned_data.get('current_class')
         if admission_class:
             students = students.filter(admission_class__icontains=admission_class)
 
@@ -77,7 +77,7 @@ def dashboard(request):
 
 @login_required
 def class_6(request):
-    class_6_students = Admission.objects.filter(admission_class='6')
+    class_6_students = Admission.objects.filter(current_class='6')
 
     # Apply filters if provided in the GET request
     year_filter_form = AdmissionYearFilterForm(request.GET)
@@ -102,7 +102,7 @@ def class_6(request):
 
 @login_required
 def class_7(request):
-    class_7_students = Admission.objects.filter(admission_class='7')
+    class_7_students = Admission.objects.filter(current_class='7')
 
     # Apply filters if provided in the GET request
     year_filter_form = AdmissionYearFilterForm(request.GET)
@@ -127,7 +127,7 @@ def class_7(request):
 
 @login_required
 def class_8(request):
-    class_8_students = Admission.objects.filter(admission_class='8')
+    class_8_students = Admission.objects.filter(current_class='8')
 
     # Apply filters if provided in the GET request
     year_filter_form = AdmissionYearFilterForm(request.GET)
@@ -152,7 +152,7 @@ def class_8(request):
 
 @login_required
 def class_9(request):
-    class_9_students = Admission.objects.filter(admission_class='9')
+    class_9_students = Admission.objects.filter(current_class='9')
 
     # Apply filters if provided in the GET request
     year_filter_form = AdmissionYearFilterForm(request.GET)
@@ -178,7 +178,7 @@ def class_9(request):
 
 @login_required
 def class_10(request):
-    class_10_students = Admission.objects.filter(admission_class='10')
+    class_10_students = Admission.objects.filter(current_class='10')
 
     # Apply filters if provided in the GET request
     year_filter_form = AdmissionYearFilterForm(request.GET)
@@ -203,7 +203,7 @@ def class_10(request):
 
 @login_required
 def class_11(request):
-    class_11_students = Admission.objects.filter(admission_class='11')
+    class_11_students = Admission.objects.filter(current_class='11')
 
     # Apply filters if provided in the GET request
     year_filter_form = AdmissionYearFilterForm(request.GET)
@@ -228,7 +228,7 @@ def class_11(request):
 
 @login_required
 def class_12(request):
-    class_12_students = Admission.objects.filter(admission_class='12')
+    class_12_students = Admission.objects.filter(current_class='12')
 
     # Apply filters if provided in the GET request
     year_filter_form = AdmissionYearFilterForm(request.GET)

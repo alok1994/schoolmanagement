@@ -12,11 +12,11 @@ from num2words import num2words
 @login_required
 def fee_detail(request):
     # Get a list of distinct class values from the Student model
-    class_choices = Admission.objects.values_list('admission_class', flat=True).distinct()
+    class_choices = Admission.objects.values_list('current_class', flat=True).distinct()
     selected_class = request.GET.get('class_filter')  # Get the selected class from the query parameter
     # Filter fees based on the selected class (if provided)
     if selected_class:
-        class_students = Admission.objects.filter(admission_class=selected_class)
+        class_students = Admission.objects.filter(current_class=selected_class)
     else:
         class_students = Admission.objects.all()
 
