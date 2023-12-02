@@ -1,6 +1,6 @@
 .sidebar {
     min-height: calc(100vh - 64px);
-    background: #181824;
+    background: rgb(23, 43, 77);
     font-family: "nunito-medium", sans-serif;
     padding: 0;
     width: 258px;
@@ -46,12 +46,14 @@
     -ms-flex-align: center;
     align-items: center;
     white-space: nowrap;
-    padding: 0.625rem 0 0.625rem 0;
     -webkit-transition-duration: 0.45s;
     transition-duration: 0.45s;
     transition-property: color;
     -webkit-transition-property: color;
     text-overflow: ellipsis;
+    padding: 0.675rem 1rem;
+    margin: 13px -1.5rem;
+    border-radius: 0.5rem;
 }
 
 .sidebar .nav .nav-item {
@@ -268,4 +270,12 @@ tr {
   display: table-row;
   vertical-align: inherit;
   border-color: inherit;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+  text-decoration: none;
+  background-color: #4CAF50 !important;
+}
+a:focus, a:hover, a {
+  color: white !important;
+  text-decoration: underline;
 }

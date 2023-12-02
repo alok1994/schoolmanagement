@@ -35,7 +35,7 @@
                         <th class="father-name-column">Father's Name</th>
                         <th class="mother-name-column">Mother's Name</th>
                         <th class="aadhar-column">Aadhar Card</th>
-                        <th class="admission-class-column">Admission Class</th>
+                        <th class="admission-class-column">Current Class</th>
                         <th class="mobile-number-column">Mobile Number</th>
                         <th>Details</th>
                         <th>Update</th> 
@@ -56,7 +56,7 @@
                     <td class="father-name-column">{{ student.father_name }}</td>
                     <td class="mother-name-column">{{ student.mother_name }}</td>
                     <td class="aadhar-column">{{ student.aadhar_card }}</td>
-                    <td class="admission-class-column">{{ student.admission_class }}</td>
+                    <td class="admission-class-column">{{ student.current_class }}</td>
                     <td class="mobile-number-column">{{ student.mobile_number }}</td>
                     <td><a href="{% url 'student_details' student.id %}">Details</a></td>
                     <td><a href="{% url 'update_student' student.id %}">Update</a></td>
