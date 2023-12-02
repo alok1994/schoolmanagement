@@ -480,3 +480,30 @@ def delete_student(request, student_id):
     student.delete()
     messages.success(request, 'Student deleted successfully.')
     return HttpResponseRedirect(reverse('student_list')) 
+
+from django.utils import timezone
+from datetime import timedelta
+
+@login_required
+def get_weekly_admissions(request):
+    # Calculate the date range for the current week
+    today = timezone.now().date()
+    start_of_week = today - timedelta(days=today.weekday())
+    end_of_week = start_of_week + timedelta(days=6)
+
+    # Query your Admission model to retrieve weekly admissions data
+    weekly_admissions = Admission.objects.filter(admission_date__range=[start_of_week, end_of_week])
+
+    # Serialize the data to JSON
+    weekly_admissions_data = {
+        'Monday': weekly_admissions.filter(admission_date=start_of_week).count(),
+        'Tuesday': weekly_admissions.filter(admission_date=start_of_week + timedelta(days=1)).count(),
+        'Wednesday': weekly_admissions.filter(admission_date=start_of_week + timedelta(days=2)).count(),
+        'Thursday': weekly_admissions.filter(admission_date=start_of_week + timedelta(days=3)).count(),
+        'Friday': weekly_admissions.filter(admission_date=start_of_week + timedelta(days=4)).count(),
+        'Saturday': weekly_admissions.filter(admission_date=start_of_week + timedelta(days=5)).count(),
+        'Sunday': weekly_admissions.filter(admission_date=end_of_week).count(),
+    }
+
+    # Return the JSON response
+    return JsonResponse(weekly_admissions_data)

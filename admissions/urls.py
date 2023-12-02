@@ -1,6 +1,7 @@
 # admissions/urls.py
 from django.urls import path
 from . import views
+from .views import get_weekly_admissions
 
 urlpatterns = [
     path('admission/', views.admission_form, name='admission_form'),
@@ -25,5 +26,7 @@ urlpatterns = [
     path('class-12/update/<int:student_id>/', views.update_student_class_12, name='update_student_class_12'),
     path('api/user-count/', views.get_user_count, name='user_count_api'),
     path('student-list/delete/<int:student_id>/', views.delete_student, name='delete_student'),
+    path('api/weekly-admissions/', get_weekly_admissions, name='weekly_admissions'),
+
 
 ]
