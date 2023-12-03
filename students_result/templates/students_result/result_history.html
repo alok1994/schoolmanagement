@@ -18,7 +18,12 @@
         <div class="content col-sm-10 col-sm-offset-2">
             {% include 'header.html' %}
             <div class="content-header">
-                <h4>Result History for {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</h4>
+                <h1>Result History </h1>
+                <li><strong>Student Name:</strong> {{ student.first_name }} {{ student.last_name }}</li>
+                <li><strong>Father's Name:</strong> {{ student.father_name }}</li>
+                <li><strong>Mother's Name:</strong> {{ student.mother_name }}</li>
+                <li><strong>Date of Birth:</strong> {{ student.date_of_birth }}</li>
+                <li><strong>Class:</strong> {{ student.current_class }}</li>
                 <p></p>
             </div>
 <form method="get">

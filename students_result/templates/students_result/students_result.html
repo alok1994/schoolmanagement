@@ -34,12 +34,13 @@
     <button type="submit">Filter</button>
 </form>
 <!-- Display Students and Their Details in a Table -->
-<table class="student-table">
+<table class="student_list_tab">
     <thead>
         <tr>
             <th>Name</th>
             <th>Father's Name</th>
             <th>Mother's Name</th>
+            <th>Curret Class</th>
             <th>Create Result</th>
             <th>View Result</th>
         </tr>
@@ -50,12 +51,9 @@
                 <td>{{ student.first_name }} {{student.middle_name}} {{ student.last_name }}</td>
                 <td>{{ student.father_name }}</td>
                 <td>{{ student.mother_name }}</td>
-                <td>
-                    <a href="{% url 'create_result' student.id %}" class="create-result-button">Create Result</a>
-                </td>
-                <td>
-                    <a href="{% url 'result_history' student.id %}" class="result-history-button">View Result</a>
-                </td>
+                <td>{{ student.current_class}}</td>
+                <td><a href="{% url 'create_result' student.id %}" class="fee_submit_btn"><i class="fa fa-edit">&nbsp;</i>Create Result</a></td>
+                <td><a href="{% url 'result_history' student.id %}" class="fee_history_btn"><i class="fa fa-history">&nbsp;</i>View Result</a></td>
             </tr>
         {% empty %}
             <tr>

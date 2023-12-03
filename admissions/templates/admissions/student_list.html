@@ -51,9 +51,9 @@
         <tbody>
             {% for student in students %}
                 <tr>
-                    <td>
+                    <td class="photo-column">
                         {% if student.photo %}
-                            <img src="{{ student.photo.url }}" alt="{{ student.first_name }} {{ student.last_name }} Photo" width="150">
+                            <img class="student_list_photo" src="{{ student.photo.url }}" alt="{{ student.first_name }} {{ student.last_name }} Photo" width="50px">
                         {% else %}
                             <p>No photo attached</p>
                         {% endif %}

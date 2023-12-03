@@ -35,8 +35,7 @@
     </form>
 
     {% if class_students %}
-    <h2>Students:</h2>
-    <table>
+    <table class="student_list_tab">
         <thead>
             <tr>
                 <th>Name</th>
@@ -46,7 +45,8 @@
                 <th>Last Month</th>
                 <th>Last Month's Tuition Fee</th>
                 <th>Last Month's Payment Date</th> 
-                <th>Actions</th>
+                <th>Sumit Fee</th>
+                <th>History</th>
                 <!-- Add more table headers as needed -->
             </tr>
         </thead>    
@@ -60,10 +60,8 @@
                 <td>{{ last_month_data.last_month }}</td>
                 <td>{{ last_month_data.last_month_amount }}</td>
                 <td>{{ last_month_data.last_month_payment_date }}</td> 
-                <td>
-                    <a href="{% url 'fee_submission' student.id %}">Submit Fee</a>
-                    <a href="{% url 'fee_history' student.id %}">View Fee History</a>
-                </td>                
+                <td><a href="{% url 'fee_submission' student.id %}" class="fee_submit_btn"><i class="fa fa-edit">&nbsp;</i>Submit Fee</a></td>
+                <td><a href="{% url 'fee_history' student.id %}" class="fee_history_btn"><i class="fa fa-history">&nbsp;</i>View Fee History</a></td>                
                 <!-- Add more student details here -->
             </tr>
             {% endfor %}

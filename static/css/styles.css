@@ -321,3 +321,35 @@ button, input, optgroup, select, textarea {
   font: inherit;
   margin: 0;
 }
+.fee_submit_btn, .fee_submit_btn:hover {
+  background-color: #081A51 !important;
+  border-color: #081A51 !important;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  padding: 4px;
+  color: #fff;
+}
+.fee_history_btn, .fee_history_btn:hover {
+  background-color: #0ca940 !important;
+  border-color: #0ca940 !important;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  padding: 4px;
+  color: #fff;
+}
+.footer_sidebar {
+  color: white;
+  margin: 300px 30px 10px;
+}
+.student_list_photo {
+  width: 50px;
+}
+.student_details_photo {
+  width: 73px;
+}
+.student-name {
+  padding-right: 10px;
+}
+.print_btn {
+  float: right;
+}

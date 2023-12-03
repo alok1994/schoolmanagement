@@ -25,11 +25,11 @@
                 <table class="table table-hover table-striped text-capitalize table-condensed11">
                 <tbody>
                 <tr>
-                    <td><b>Student's Name :</b></td>
-                    <td colspan="3">{{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</td>
+                    <td class="student-name"><b>Student's Name :</b></td>
+                    <td colspan="3" class="student-name-content">{{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</td>
             <td rowspan="3">
         {% if student.photo %}
-            <img src="{{ student.photo.url }}" alt="{{ student.first_name }} {{ student.last_name }} Photo" width="150">
+            <img class="student_details_photo" src="{{ student.photo.url }}" alt="{{ student.first_name }} {{ student.last_name }} Photo" width="150">
         {% else %}
             <p>No photo attached</p>
         {% endif %}
@@ -128,11 +128,10 @@
 </div>
 </div>
 
-</div>
 <script>
-function printPage() {
-window.print();
-}
+  function printPage() {
+  window.print();
+  }
 </script>
 </body>
 </html>

@@ -20,18 +20,10 @@
         
         <div class="content col-sm-10 col-sm-offset-2">
             {% include 'header.html' %}
-            <h1 class="student_heading update_heading">Update Student Details</h1>
-    
-            <!-- <form method="post" enctype="multipart/form-data" class="admission_form">
-                {% csrf_token %}
-                {{ form.as_p }} 
-                <div class="col-sm-12 submit_admission">
-                    <button type="submit" class="submit-button">Update</button>
-                </div>
-                <div class="clearfix"></div>
-              
-            </form> -->
-
+            <div class="content-header">
+                <h1>Update Student</h1>
+                <p></p>
+            </div>
             <form method="POST" enctype="multipart/form-data" class="admission_form">
                 {% csrf_token %}
                 <div class="form-group-first-name col-sm-4">
