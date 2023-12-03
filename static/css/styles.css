@@ -182,15 +182,15 @@ body {
   }
   
   input, button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    /* width: 16%; */
+    /* padding: 10px; */
+    /* margin-bottom: 10px; */
     border: 1px solid #ccc;
     border-radius: 3px;
   }
   
   button {
-    background-color: #4CAF50;
+    background-color: #0ca940;
     color: white;
   }
   
@@ -220,7 +220,7 @@ body {
   }
   
   .btn.btn-primary {
-    background-color: #4CAF50;
+    background-color: #0ca940;
     color: white;
   }
   
@@ -273,9 +273,51 @@ tr {
 }
 .nav>li>a:focus, .nav>li>a:hover {
   text-decoration: none;
-  background-color: #4CAF50 !important;
+  background-color: #0ca940 !important;
 }
 a:focus, a:hover, a {
   color: white !important;
   text-decoration: underline;
+}
+.details_btn, .details_btn:hover {
+  background-color: #081A51;
+  border-color: #081A51;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  padding: 5px;
+  color: #fff;
+}
+.update_btn {
+  background-color: #0ca940;
+  border-color: #0ca940;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  padding: 5px;
+  color: #fff;
+}
+a.delete_btn {
+  padding: 5px;
+  font-size: 12px;
+}
+.h1, .h2, .h3, h1, h2, h3 {
+  margin-top: 107px !important;
+  margin-bottom: 10px;
+}
+.menu-title-header{
+  color: #111111;
+  font-size: 14px;
+  line-height: 1.42857143;
+  font-family: "nunito-medium", sans-serif;
+}
+.student_list_submit{
+  margin: 5px 120px !important;
+  font-family: "nunito-medium", sans-serif;
+}
+.student_list_class_filter {
+  width: 206px !important;
+}
+button, input, optgroup, select, textarea {
+  /* color: inherit; */
+  font: inherit;
+  margin: 0;
 }
