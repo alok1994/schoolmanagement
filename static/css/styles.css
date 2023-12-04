@@ -370,3 +370,50 @@ table.student_fee_tab th, table.student_fee_tab td {
   font-size: 14px;
   text-transform: capitalize;
 }
+form.admission_form {
+
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid #fff;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #f4f4f4;
+  padding: 8px !important;
+  text-align: left !important;
+}
+
+label {
+  color: #25396f;
+}
+
+/* Style for input fields */
+.admission_form input[type="text"],
+.admission_form input[type="date"],
+.admission_form input[type="file"],
+.admission_form input[type="number"],
+textarea,
+select {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+  background-color: #dce7f1;
+}
+
+.form-group textarea {
+  height: 50px;
+}
