@@ -18,119 +18,128 @@
         <div class="content col-sm-10 col-sm-offset-2">
             {% include 'header.html' %}
             <div class="content-header">
-                <h1>Result History </h1>
-                <li><strong>Student Name:</strong> {{ student.first_name }} {{ student.last_name }}</li>
-                <li><strong>Father's Name:</strong> {{ student.father_name }}</li>
-                <li><strong>Mother's Name:</strong> {{ student.mother_name }}</li>
-                <li><strong>Date of Birth:</strong> {{ student.date_of_birth }}</li>
-                <li><strong>Class:</strong> {{ student.current_class }}</li>
+                <h2>Result History</h2>
                 <p></p>
             </div>
-<form method="get">
-    <label for="exam_type">Select Exam Type:</label>
-    <select id="exam_type" name="exam_type">
-        <option value="" {% if not selected_exam_type %}selected{% endif %}>All</option>
-        <option value="Mid-Term" {% if selected_exam_type == "Mid-Term" %}selected{% endif %}>Mid-Term</option>
-        <option value="Final" {% if selected_exam_type == "Final" %}selected{% endif %}>Final</option>
-        <option value="Quiz" {% if selected_exam_type == "Quiz" %}selected{% endif %}>Quiz</option>
-        <!-- Add more exam type options as needed -->
-    </select>
-    <input type="submit" value="Filter">
-</form>
-<table>
-    <thead>
-        <tr>
-            <th>Subject</th>
-            <th>Min Marks</th>
-            <th>Max Marks</th>
-            <th>Marks Obtained</th>
-            <th>Remark</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for result in result_history %}
-            <tr>
-                <td>{{ result.subject }}</td>
-                <td>{{ result.min_marks }}</td>
-                <td>{{ result.max_marks }}</td>
-                <td>{{ result.marks_obtained }}</td>
-                <td>{{ result.remark }}</td>
-            </tr>
-        {% empty %}
-            <tr>
-                <td colspan="5">No results found for the selected exam type.</td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
-<h4>Total Obtained Marks: {{ total_obtained_marks }}</h4>
-<h4>Total Min Marks: {{ total_min_marks }}</h4>
-<h4>Total Max Marks: {{ total_max_marks }}</h4>
-<button id="print-button">Print</button>
-<!-- JavaScript code for printing -->
-<script>
-    // Function to print the result history
-    function printResultHistory() {
-        // Create a new window for printing
-        var printWindow = window.open('', '', 'width=800,height=600');
-
-        // Content to be printed
-        var content = `
-            <p><strong>Student Name:</strong> {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</p>
-            <p><strong>Father's Name:</strong> {{ student.father_name }}</p>
-            <p><strong>Mother's Name:</strong> {{ student.mother_name }}</p>
-            <p><strong>Class:</strong> {{ student.admission_class }}</p>
-            <p><strong>Exam Type:</strong> {{ selected_exam_type }}</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Subject</th>
-                        <th>Min Marks</th>
-                        <th>Max Marks</th>
-                        <th>Obtained Marks</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for result in result_history %}
+            <div class="container student_sec">
+                <div class="section">
+                    <p><b>Student Name:</b> {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</p>
+                    <p><b>Father's Name:</b> {{ student.father_name }}</p>
+                    <p><b>Mother's Name:</b> {{ student.mother_name }}</p>
+                    <p><b>Current Class:</b> {{ student.current_class }} </p>
+                    <p><b>Date of Birth:</b> {{ student.date_of_birth }}</p>
+                </div>
+            </div>
+            <div class="container student_sec1">
+                <form method="get">
+                    <label for="exam_type">Select Exam Type:</label>
+                    <select id="exam_type" name="exam_type">
+                        <option value="" {% if not selected_exam_type %}selected{% endif %}>All</option>
+                        <option value="Mid-Term" {% if selected_exam_type == "Mid-Term" %}selected{% endif %}>Mid-Term</option>
+                        <option value="Final" {% if selected_exam_type == "Final" %}selected{% endif %}>Final</option>
+                        <option value="Quiz" {% if selected_exam_type == "Quiz" %}selected{% endif %}>Quiz</option>
+                        <!-- Add more exam type options as needed -->
+                    </select>
+                    <input type="submit" value="Filter">
+                </form>
+                <table>
+                    <thead>
                         <tr>
-                            <td>{{ result.subject }}</td>
-                            <td>{{ result.min_marks }}</td>
-                            <td>{{ result.max_marks }}</td>
-                            <td>{{ result.marks_obtained }}</td>
+                            <th>Subject</th>
+                            <th>Min Marks</th>
+                            <th>Max Marks</th>
+                            <th>Marks Obtained</th>
+                            <th>Remark</th>
                         </tr>
-                    {% empty %}
-                        <tr>
-                            <td colspan="4">No results found for the selected exam type.</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <p><strong>Total Min Marks:</strong> {{ total_min_marks }}</p>
-            <p><strong>Total Max Marks:</strong> {{ total_max_marks }}</p>
-            <p><strong>Total Obtained Marks:</strong> {{ total_obtained_marks }}</p>
-            <p><strong>Principal's signature: ___________________________</p>
-            <p><strong>Class Teacher signature: ___________________________</p>
-            <p><strong>Student's signature: ___________________________</p>
-            <p><strong>Date: ___________________________</p>
-        `;
+                    </thead>
+                    <tbody>
+                        {% for result in result_history %}
+                            <tr>
+                                <td>{{ result.subject }}</td>
+                                <td>{{ result.min_marks }}</td>
+                                <td>{{ result.max_marks }}</td>
+                                <td>{{ result.marks_obtained }}</td>
+                                <td>{{ result.remark }}</td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="5">No results found for the selected exam type.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                    <p><b>Total Obtained Marks:</b> {{ total_obtained_marks }}</p>
+                    <p><b>Obtained Percentage:</b> {{ percentage }} %</p>
+                    <p><b>Total Min Marks:</b> {{ total_min_marks }}</p>
+                    <p><b>Total Max Marks:</b> {{ total_max_marks }}</p>
+                    <button id="print-button">Print</button>
+                 
+                     <!-- JavaScript code for printing -->
+                <script>
+                    // Function to print the result history
+                    function printResultHistory() {
+                        // Create a new window for printing
+                        var printWindow = window.open('', '', 'width=800,height=600');
 
-        // Set the content of the print window
-        printWindow.document.open();
-        printWindow.document.write(content);
-        printWindow.document.close();
+                        // Content to be printed
+                        var content = `
+                            <p><strong>Student Name:</strong> {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</p>
+                            <p><strong>Father's Name:</strong> {{ student.father_name }}</p>
+                            <p><strong>Mother's Name:</strong> {{ student.mother_name }}</p>
+                            <p><strong>Class:</strong> {{ student.admission_class }}</p>
+                            <p><strong>Exam Type:</strong> {{ selected_exam_type }}</p>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Subject</th>
+                                        <th>Min Marks</th>
+                                        <th>Max Marks</th>
+                                        <th>Obtained Marks</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for result in result_history %}
+                                        <tr>
+                                            <td>{{ result.subject }}</td>
+                                            <td>{{ result.min_marks }}</td>
+                                            <td>{{ result.max_marks }}</td>
+                                            <td>{{ result.marks_obtained }}</td>
+                                        </tr>
+                                    {% empty %}
+                                        <tr>
+                                            <td colspan="4">No results found for the selected exam type.</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            <p><strong>Total Min Marks:</strong> {{ total_min_marks }}</p>
+                            <p><strong>Total Max Marks:</strong> {{ total_max_marks }}</p>
+                            <p><strong>Total Obtained Marks:</strong> {{ total_obtained_marks }}</p>
+                            <p><strong>Principal's signature: ___________________________</p>
+                            <p><strong>Class Teacher signature: ___________________________</p>
+                            <p><strong>Student's signature: ___________________________</p>
+                            <p><strong>Date: ___________________________</p>
+                        `;
 
-        // Print the content
-        printWindow.print();
-        printWindow.close();
-    }
+                        // Set the content of the print window
+                        printWindow.document.open();
+                        printWindow.document.write(content);
+                        printWindow.document.close();
 
-    // Add an event listener to the print button
-    var printButton = document.getElementById('print-button');
-    if (printButton) {
-        printButton.addEventListener('click', printResultHistory);
-    }
-</script>
-        </div>
+                        // Print the content
+                        printWindow.print();
+                        printWindow.close();
+                    }
+
+                    // Add an event listener to the print button
+                    var printButton = document.getElementById('print-button');
+                    if (printButton) {
+                        printButton.addEventListener('click', printResultHistory);
+                    }
+                </script>
+                    </div>
+                </div>
     </div>
+
 </body>
 </html>

@@ -108,6 +108,15 @@ def result_history(request, student_id):
     total_obtained_marks = sum(result.marks_obtained for result in result_history)
     total_min_marks = sum(result.min_marks for result in result_history)
     total_max_marks = sum(result.max_marks for result in result_history)
+    
+    if total_max_marks != 0:
+        percentage = (total_obtained_marks / total_max_marks) * 100
+    else:
+        # Set a default value or handle the scenario as per your requirement
+        percentage = 0
+    
+    #percentage = (total_obtained_marks / total_max_marks) * 100
+    format_percent = '{:.2f}'.format(percentage)
 
     # Pass the filtered result history, student, and total values to the template
     context = {
@@ -117,6 +126,7 @@ def result_history(request, student_id):
         'total_obtained_marks': total_obtained_marks,
         'total_min_marks': total_min_marks,
         'total_max_marks': total_max_marks,
+        'percentage': format_percent
     }
 
     return render(request, 'students_result/result_history.html', context)
