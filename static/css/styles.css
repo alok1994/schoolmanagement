@@ -354,5 +354,19 @@ button, input, optgroup, select, textarea {
   float: right;
 }
 .student_sec {
-  margin-top: 122px;
+  margin-top: 24px;
+}
+table.student_fee_tab {
+  background-color: #fff;
+  padding: 10px;
+}
+table.student_fee_tab tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+table.student_fee_tab tr:hover {
+  box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.075);
+}
+table.student_fee_tab th, table.student_fee_tab td {
+  font-size: 14px;
+  text-transform: capitalize;
 }

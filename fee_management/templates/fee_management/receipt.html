@@ -17,8 +17,8 @@
         
           <div class="content col-sm-10 col-sm-offset-2">
             {% include 'header.html' %}
-            <div class="static-box trans_cer">
-                <div class="col-sm-4">
+            <div class="container student_sec">
+                <div class="section">
                     <div class="combined-info">
                     </div>
                   </div>
@@ -26,29 +26,15 @@
               </div> 
               <div class="clearfix"></div>
                 <div class="student-details clearfix">
-                    <div class="col-sm-6">
+                    <div class="section">
                         <p><b>Student Name:</b> {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</p>
-                    </div>
-                    <div class="col-sm-6">
                         <p><b>Father Name:</b> {{ student.father_name }}</p>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-sm-6">
                         <p><b>Mother Name:</b> {{ student.mother_name }}</p>
-                    </div>
-                    <div class="col-sm-6">
                         <p><b>Class:</b> {{ student.current_class }} </p>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-sm-6">
                         <p><b>Date of Payment:</b> {{ fee.payment_date }}</p>
-                    </div>
-                    <div class="col-sm-6">
                         <p><b>Receipt Number:</b> {{ fee.receipt_number }}</p>
-                    </div>
-                    <div class="clearfix"></div>
                 </div>
-                <table class="student_list_tab" style="margin-left: 0px;">
+                <table class="student_receipt_tab" style="margin-left: 0px;">
                     <thead>
                         <tr>
                             <th>S N</th>
